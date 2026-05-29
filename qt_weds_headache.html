@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qt weds Headache — Wedding Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --mustard:       #c9920a;
+  --mustard-deep:  #a07208;
+  --mustard-light: #f5c842;
+  --mustard-pale:  #fef9ec;
+  --mustard-border:#e8c456;
+  --white:         #ffffff;
+  --offwhite:      #fffdf5;
+  --page-bg:       #fffcf0;
+  --text:          #2a1e00;
+  --text-mid:      #6b5010;
+  --text-dim:      #a8880a;
+  --border:        #e8d484;
+  --border-light:  #f2e9b0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--page-bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+#header {
+  background: var(--mustard);
+  position: sticky; top: 0; z-index: 40;
+  box-shadow: 0 3px 16px rgba(160,114,8,0.35);
+}
+.header-top-line { height: 2px; background: rgba(255,255,255,0.6); }
+.header-inner { padding: 16px 28px 10px; text-align: center; }
+.header-stars { color: rgba(255,255,255,0.5); font-size: 9px; letter-spacing: 0.6em; font-family: 'Cinzel', serif; margin-bottom: 6px; }
+.header-title { line-height: 1.05; }
+.header-title .big { font-family: 'Cinzel', serif; font-size: 44px; font-weight: 600; color: #fff; letter-spacing: 0.08em; text-shadow: 0 1px 6px rgba(120,80,0,0.3); }
+.header-title .weds { font-family: 'Cinzel', serif; font-style: italic; font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.75); letter-spacing: 0.2em; margin: 0 12px; vertical-align: middle; }
+.header-sub { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 0.5em; color: rgba(255,255,255,0.55); margin-top: 5px; text-transform: uppercase; }
+.header-orna { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 8px; }
+.header-orna .line { width: 50px; height: 1px; background: rgba(255,255,255,0.4); }
+.header-orna .sym { color: rgba(255,255,255,0.7); font-size: 14px; }
+.header-orna .sym2 { color: rgba(255,255,255,0.5); font-size: 9px; }
+
+/* Chevron SVG border */
+.chevron-border { display: block; width: 100%; height: 10px; }
+
+/* ── TABS ── */
+#tabs-bar {
+  display: flex; overflow-x: auto;
+  background: rgba(0,0,0,0.12);
+  padding: 0 16px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  scrollbar-width: none;
+}
+#tabs-bar::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 10px 14px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  background: none; border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer; white-space: nowrap;
+  font-family: 'Lato', sans-serif;
+  transition: color 0.15s; margin-bottom: -1px;
+}
+.tab-btn.active { color: #fff; border-bottom-color: #fff; }
+
+/* ── BODY ── */
+#body { max-width: 900px; margin: 0 auto; padding: 28px 24px 60px; }
+
+/* Section head */
+.section-head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.section-title-text { font-family: 'Cinzel', serif; font-size: 26px; font-weight: 400; color: var(--mustard-deep); letter-spacing: 0.05em; line-height: 1.1; }
+.lotus-divider { display: flex; align-items: center; gap: 8px; margin: 5px 0 16px; }
+.lotus-divider .line-l { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--mustard-border)); }
+.lotus-divider .line-r { flex: 1; height: 1px; background: linear-gradient(to left, transparent, var(--mustard-border)); }
+.lotus-divider .sym { color: var(--mustard); font-size: 13px; line-height: 1; }
+.lotus-divider .sym2 { color: var(--mustard-light); font-size: 9px; line-height: 1; }
+.btn-add-contact {
+  background: var(--mustard); color: #fff; border: 1px solid var(--mustard-deep);
+  padding: 9px 16px; border-radius: 4px; font-size: 12px; font-weight: 700;
+  cursor: pointer; letter-spacing: 0.08em; font-family: 'Lato', sans-serif;
+  box-shadow: 0 2px 8px rgba(160,114,8,0.25);
+}
+.btn-add-note {
+  background: #fff; color: var(--mustard-deep); border: 1px solid var(--mustard-border);
+  padding: 9px 16px; border-radius: 4px; font-size: 12px; font-weight: 700;
+  cursor: pointer; letter-spacing: 0.08em; font-family: 'Lato', sans-serif;
+}
+.section-btns { display: flex; gap: 8px; flex-shrink: 0; padding-top: 4px; }
+
+/* Status chips */
+.chips { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 22px; }
+.chip {
+  display: flex; align-items: center; gap: 6px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 20px; padding: 4px 12px; font-size: 11.5px;
+}
+.chip-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.chip-label { color: var(--text-mid); }
+.chip-count { color: var(--text); font-weight: 700; }
+
+/* Empty state */
+.empty-state {
+  background: #fff; border: 2px dashed var(--mustard-border);
+  border-radius: 8px; padding: 60px 20px; text-align: center;
+}
+.empty-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.25; }
+.empty-text { font-family: 'Cinzel', serif; font-size: 13px; color: var(--text-mid); letter-spacing: 0.04em; line-height: 2; }
+.empty-text span { font-size: 11px; opacity: 0.6; }
+
+/* Entries */
+#entries-list { display: flex; flex-direction: column; gap: 10px; }
+.entry-card {
+  background: #fff; border: 1px solid var(--border-light);
+  border-left: 4px solid var(--mustard-border);
+  border-radius: 6px; padding: 16px 20px;
+  box-shadow: 0 1px 6px rgba(160,114,8,0.07);
+}
+.entry-card.note-card { background: var(--mustard-pale); }
+.entry-inner { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.entry-type-label { font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 4px; font-weight: 700; }
+.entry-card.note-card .entry-type-label { color: var(--mustard); }
+.entry-name { font-family: 'Cinzel', serif; font-size: 15.5px; font-weight: 400; color: var(--text); margin-bottom: 7px; letter-spacing: 0.02em; }
+.entry-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.status-badge {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em;
+  padding: 3px 10px; border-radius: 20px;
+}
+.price-badge {
+  font-size: 12px; font-weight: 700; color: var(--mustard-deep);
+  background: #fef3cc; padding: 3px 10px; border-radius: 12px;
+  border: 1px solid var(--mustard-border);
+}
+.meta-info { font-size: 11.5px; color: var(--text-dim); }
+.entry-notes { font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-top: 6px; }
+.entry-followup { font-size: 13px; color: var(--mustard-deep); margin-top: 5px; font-weight: 700; }
+.btn-delete {
+  background: var(--mustard-pale); border: 1px solid var(--border);
+  border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; color: var(--text-mid);
+  flex-shrink: 0;
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(80,50,0,0.45);
+  backdrop-filter: blur(4px);
+  z-index: 100; display: none;
+  align-items: center; justify-content: center; padding: 16px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 8px;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--mustard);
+  width: 100%; max-width: 540px;
+  max-height: 90vh; overflow-y: auto;
+  padding: 28px;
+  box-shadow: 0 24px 64px rgba(80,50,0,0.22);
+}
+.modal-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 18px; padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-light);
+}
+.modal-title { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 400; color: var(--mustard-deep); letter-spacing: 0.05em; }
+.modal-close { background: none; border: none; font-size: 18px; cursor: pointer; color: var(--text-dim); line-height: 1; }
+.form-group { margin-bottom: 14px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+label.form-label {
+  display: block; font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-mid); margin-bottom: 5px; font-weight: 700;
+}
+input.form-inp, select.form-inp, textarea.form-inp {
+  width: 100%; background: var(--offwhite);
+  border: 1px solid var(--border); border-radius: 4px;
+  padding: 9px 12px; font-size: 14px; color: var(--text);
+  font-family: 'Lato', sans-serif; outline: none;
+  appearance: none; -webkit-appearance: none;
+}
+textarea.form-inp { resize: vertical; min-height: 88px; }
+input.form-inp:focus, select.form-inp:focus, textarea.form-inp:focus {
+  border-color: var(--mustard);
+}
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+.btn-cancel {
+  background: none; border: 1px solid var(--border); border-radius: 4px;
+  padding: 9px 18px; font-size: 12px; color: var(--text-mid);
+  cursor: pointer; font-family: 'Lato', sans-serif; font-weight: 700; letter-spacing: 0.08em;
+}
+.btn-save {
+  background: var(--mustard); border: 1px solid var(--mustard-deep); border-radius: 4px;
+  padding: 9px 22px; font-size: 12px; font-weight: 700; color: #fff;
+  cursor: pointer; font-family: 'Lato', sans-serif; letter-spacing: 0.08em;
+  box-shadow: 0 2px 8px rgba(160,114,8,0.3);
+}
+
+/* ── TOAST ── */
+#toast {
+  position: fixed; bottom: 20px; right: 20px;
+  background: var(--mustard); color: #fff;
+  padding: 10px 20px; border-radius: 4px;
+  font-size: 13px; font-weight: 700;
+  border: 1px solid var(--mustard-deep);
+  box-shadow: 0 4px 16px rgba(160,114,8,0.4);
+  z-index: 200; letter-spacing: 0.05em;
+  display: none;
+}
+.hidden-phone { display: none; }
+
+@media (max-width: 600px) {
+  .header-title .big { font-size: 28px; }
+  .header-title .weds { font-size: 15px; margin: 0 6px; }
+  .form-row { grid-template-columns: 1fr; }
+  #body { padding: 20px 16px 50px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header">
+  <div class="header-top-line"></div>
+  <div class="header-inner">
+    <div class="header-stars">✦ ✦ ✦</div>
+    <div class="header-title">
+      <span class="big">Qt</span>
+      <span class="weds">weds</span>
+      <span class="big">Headache</span>
+    </div>
+    <div class="header-sub">Marwari Wedding Planner</div>
+    <div class="header-orna">
+      <div class="line"></div>
+      <span class="sym">✾</span>
+      <span class="sym2">◈</span>
+      <span class="sym">✾</span>
+      <div class="line"></div>
+    </div>
+  </div>
+  <!-- Chevron SVG -->
+  <svg class="chevron-border" viewBox="0 0 600 10" preserveAspectRatio="none">
+    <defs>
+      <pattern id="chev" x="0" y="0" width="20" height="10" patternUnits="userSpaceOnUse">
+        <polyline points="0,10 10,1 20,10" fill="none" stroke="white" stroke-width="1.1" opacity="0.25"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="10" fill="url(#chev)"/>
+  </svg>
+  <div id="tabs-bar"></div>
+</div>
+
+<!-- BODY -->
+<div id="body">
+  <div class="section-head">
+    <div>
+      <div class="section-title-text" id="section-title"></div>
+      <div class="lotus-divider">
+        <div class="line-l"></div>
+        <span class="sym">❋</span>
+        <span class="sym2">◆</span>
+        <span class="sym">❋</span>
+        <div class="line-r"></div>
+      </div>
+    </div>
+    <div class="section-btns">
+      <button class="btn-add-contact" id="btn-contact" onclick="openAdd('contact')"></button>
+      <button class="btn-add-note" onclick="openAdd('note')">+ ADD NOTE</button>
+    </div>
+  </div>
+  <div class="chips" id="chips"></div>
+  <div id="entries-area"></div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="overlayClick(event)">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="modal-title" id="modal-title">Add Contact</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modal-body"></div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">CANCEL</button>
+      <button class="btn-save" onclick="saveEntry()">SAVE</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ── DATA ──
+const SECTIONS = {
+  food:    { label:"Food Catering",  icon:"🍽️", priceLabel:"Price per Plate / Package", showPhone:true,
+    statuses:[
+      {value:"pending", badge:"Pending",           color:"#b8982a"},
+      {value:"called",  badge:"Called",             color:"#c9920a"},
+      {value:"special", badge:"Tasting Planned 🍴", color:"#8a5e00"},
+      {value:"booked",  badge:"Booked ✓",           color:"#2d7a4f"},
+      {value:"done",    badge:"Done ✓",             color:"#1a5a8a"},
+      {value:"rejected",badge:"Rejected",           color:"#a02020"},
+    ]},
+  stay:    { label:"Stay & Venue",   icon:"🏨", priceLabel:"Price per Night / Package", showPhone:true,
+    statuses:[
+      {value:"pending", badge:"Pending",        color:"#b8982a"},
+      {value:"called",  badge:"Called",          color:"#c9920a"},
+      {value:"special", badge:"Site Visit 🏛️",   color:"#8a5e00"},
+      {value:"booked",  badge:"Booked ✓",        color:"#2d7a4f"},
+      {value:"done",    badge:"Done ✓",          color:"#1a5a8a"},
+      {value:"rejected",badge:"Rejected",        color:"#a02020"},
+    ]},
+  video:   { label:"Videographer",  icon:"🎥", priceLabel:"Package Price", showPhone:true,
+    statuses:[
+      {value:"pending", badge:"Pending",              color:"#b8982a"},
+      {value:"called",  badge:"Called",               color:"#c9920a"},
+      {value:"special", badge:"Portfolio Review 🎬",  color:"#8a5e00"},
+      {value:"booked",  badge:"Booked ✓",             color:"#2d7a4f"},
+      {value:"done",    badge:"Done ✓",               color:"#1a5a8a"},
+      {value:"rejected",badge:"Rejected",             color:"#a02020"},
+    ]},
+  sangeet: { label:"Sangeet",        icon:"🎶", priceLabel:"Price / Fee", showPhone:false,
+    statuses:[
+      {value:"pending", badge:"Pending",         color:"#b8982a"},
+      {value:"called",  badge:"Called",          color:"#c9920a"},
+      {value:"special", badge:"Demo Planned 🎤", color:"#8a5e00"},
+      {value:"booked",  badge:"Booked ✓",        color:"#2d7a4f"},
+      {value:"done",    badge:"Done ✓",          color:"#1a5a8a"},
+      {value:"rejected",badge:"Rejected",        color:"#a02020"},
+    ]},
+  bride:   { label:"Bride Dress",    icon:"👰", priceLabel:"Price / Budget", showPhone:true,
+    statuses:[
+      {value:"pending", badge:"Pending",          color:"#b8982a"},
+      {value:"called",  badge:"Called",           color:"#c9920a"},
+      {value:"special", badge:"Trial Planned 👗", color:"#8a5e00"},
+      {value:"booked",  badge:"Ordered ✓",        color:"#2d7a4f"},
+      {value:"done",    badge:"Done ✓",           color:"#1a5a8a"},
+      {value:"rejected",badge:"Rejected",         color:"#a02020"},
+    ]},
+  groom:   { label:"Groom Dress",    icon:"🤵", priceLabel:"Price / Budget", showPhone:true,
+    statuses:[
+      {value:"pending", badge:"Pending",          color:"#b8982a"},
+      {value:"called",  badge:"Called",           color:"#c9920a"},
+      {value:"special", badge:"Trial Planned 🧵", color:"#8a5e00"},
+      {value:"booked",  badge:"Ordered ✓",        color:"#2d7a4f"},
+      {value:"done",    badge:"Done ✓",           color:"#1a5a8a"},
+      {value:"rejected",badge:"Rejected",         color:"#a02020"},
+    ]},
+};
+
+const BORDER_COLORS = {
+  pending:"#d4aa30", called:"#c9920a", special:"#8a5e00",
+  booked:"#2d7a4f", done:"#1a5a8a", rejected:"#a02020",
+};
+const BADGE_STYLES = {
+  pending: {bg:"#fef9d8",color:"#6b5010",border:"#e8d060"},
+  called:  {bg:"#fff3cc",color:"#7a5a00",border:"#f0c840"},
+  special: {bg:"#feeebb",color:"#5a3800",border:"#d4a020"},
+  booked:  {bg:"#e8f5ee",color:"#1a5a35",border:"#80c8a0"},
+  done:    {bg:"#e6f0f8",color:"#0f3a5e",border:"#80aace"},
+  rejected:{bg:"#faeaea",color:"#701010",border:"#e09090"},
+};
+
+const TABS = Object.keys(SECTIONS);
+const STORE = 'qt_wedding_html_v1';
+
+// ── STATE ──
+let activeTab = 'food';
+let entries   = JSON.parse(localStorage.getItem(STORE) || 'null') ||
+                Object.fromEntries(TABS.map(k=>[k,[]]));
+let modalState = null; // {cardType, editId}
+
+function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
+function esc(s){ const d=document.createElement('div'); d.textContent=String(s||''); return d.innerHTML; }
+function save(){ localStorage.setItem(STORE, JSON.stringify(entries)); }
+
+// ── TABS ──
+function buildTabs(){
+  const bar = document.getElementById('tabs-bar');
+  bar.innerHTML = TABS.map(key=>`
+    <button class="tab-btn${key===activeTab?' active':''}" onclick="switchTab('${key}')">
+      ${SECTIONS[key].icon} ${SECTIONS[key].label}
+    </button>`).join('');
+}
+
+function switchTab(key){
+  activeTab = key;
+  buildTabs();
+  renderSection();
+}
+
+// ── SECTION RENDER ──
+function renderSection(){
+  const cfg = SECTIONS[activeTab];
+  const list = entries[activeTab];
+
+  // title & button
+  document.getElementById('section-title').textContent = cfg.icon + '  ' + cfg.label;
+  document.getElementById('btn-contact').textContent = cfg.showPhone ? '+ ADD CONTACT' : '+ ADD ENTRY';
+
+  // chips
+  const counts = Object.fromEntries(cfg.statuses.map(s=>[s.value,0]));
+  list.forEach(e=>{ if(counts[e.status]!==undefined) counts[e.status]++; });
+  document.getElementById('chips').innerHTML = cfg.statuses.map(s=>`
+    <div class="chip">
+      <span class="chip-dot" style="background:${s.color}"></span>
+      <span class="chip-label">${esc(s.badge)}</span>
+      <span class="chip-count">${counts[s.value]}</span>
+    </div>`).join('');
+
+  // entries
+  const area = document.getElementById('entries-area');
+  if(list.length===0){
+    area.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">${cfg.icon}</div>
+        <div class="empty-text">
+          Nothing logged yet for ${esc(cfg.label)}.<br>
+          <span>Use the buttons above to begin tracking.</span>
+        </div>
+      </div>`;
+  } else {
+    area.innerHTML = `<div id="entries-list">${list.map(entryHTML).join('')}</div>`;
+  }
+}
+
+function entryHTML(entry){
+  const cfg = SECTIONS[activeTab];
+  const st  = cfg.statuses.find(s=>s.value===entry.status)||cfg.statuses[0];
+  const bs  = BADGE_STYLES[entry.status]||BADGE_STYLES.pending;
+  const dateStr = entry.date
+    ? new Date(entry.date+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})
+    : '';
+  const isNote = entry.type==='note';
+  const borderCol = BORDER_COLORS[entry.status]||'#e8c456';
+
+  return `
+    <div class="entry-card${isNote?' note-card':''}" style="border-left-color:${borderCol}">
+      <div class="entry-inner">
+        <div style="flex:1">
+          <div class="entry-type-label">${isNote?'📌 Note':'📞 Contact'}</div>
+          <div class="entry-name">${esc(isNote?entry.title:entry.name)}</div>
+          <div class="entry-meta">
+            <span class="status-badge" style="background:${bs.bg};color:${bs.color};border:1px solid ${bs.border}">${esc(st.badge)}</span>
+            ${!isNote&&entry.price?`<span class="price-badge">${esc(entry.price)}</span>`:''}
+            ${!isNote&&dateStr?`<span class="meta-info">📅 ${esc(dateStr)}</span>`:''}
+            ${!isNote&&entry.phone?`<span class="meta-info">📞 ${esc(entry.phone)}</span>`:''}
+          </div>
+          ${entry.notes?`<div class="entry-notes">💬 ${esc(entry.notes)}</div>`:''}
+          ${!isNote&&entry.followup?`<div class="entry-followup">→ ${esc(entry.followup)}</div>`:''}
+        </div>
+        <button class="btn-delete" onclick="deleteEntry('${entry.id}')">🗑</button>
+      </div>
+    </div>`;
+}
+
+function deleteEntry(id){
+  if(!confirm('Remove this entry?')) return;
+  entries[activeTab] = entries[activeTab].filter(e=>e.id!==id);
+  save(); renderSection();
+  showToast('Removed');
+}
+
+// ── MODAL ──
+function openAdd(cardType){
+  modalState = { cardType, editId: null };
+  buildModalForm(cardType, null);
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal(){
+  document.getElementById('modal').classList.remove('open');
+  modalState = null;
+}
+
+function overlayClick(e){ if(e.target===document.getElementById('modal')) closeModal(); }
+
+function buildModalForm(cardType, editData){
+  const cfg = SECTIONS[activeTab];
+  const isContact = cardType==='contact';
+  const e = editData || {};
+
+  document.getElementById('modal-title').textContent =
+    modalState?.editId
+      ? (isContact?'Edit Contact':'Edit Note')
+      : (isContact?`Add Contact — ${cfg.label}`:`Add Note — ${cfg.label}`);
+
+  const statusOptions = cfg.statuses.map(s=>
+    `<option value="${s.value}"${(e.status||'called')===s.value?' selected':''}>${s.badge}</option>`
+  ).join('');
+
+  if(!isContact){
+    document.getElementById('modal-body').innerHTML = `
+      <div class="form-group">
+        <label class="form-label">Title</label>
+        <input id="f-title" class="form-inp" placeholder="e.g. Choreography idea, decor theme…" value="${esc(e.title||'')}">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Status</label>
+        <select id="f-status" class="form-inp">${statusOptions}</select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea id="f-notes" class="form-inp" placeholder="Any details, ideas, reminders…" rows="4">${esc(e.notes||'')}</textarea>
+      </div>`;
+  } else {
+    document.getElementById('modal-body').innerHTML = `
+      <div class="form-group">
+        <label class="form-label">${cfg.showPhone?'Vendor / Person Name':'Name / Description'}</label>
+        <input id="f-name" class="form-inp" placeholder="e.g. Sharma Caterers, Raj Photography…" value="${esc(e.name||'')}">
+      </div>
+      ${cfg.showPhone ? `
+      <div class="form-row">
+        <div>
+          <label class="form-label">Phone / Contact</label>
+          <input id="f-phone" class="form-inp" placeholder="+91 …" value="${esc(e.phone||'')}">
+        </div>
+        <div>
+          <label class="form-label">Date Called</label>
+          <input id="f-date" type="date" class="form-inp" value="${esc(e.date||'')}">
+        </div>
+      </div>` : `
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input id="f-date" type="date" class="form-inp" value="${esc(e.date||'')}">
+      </div>`}
+      <div class="form-row">
+        <div>
+          <label class="form-label">${esc(cfg.priceLabel)}</label>
+          <input id="f-price" class="form-inp" placeholder="e.g. ₹1,200 per plate" value="${esc(e.price||'')}">
+        </div>
+        <div>
+          <label class="form-label">Status</label>
+          <select id="f-status" class="form-inp">${statusOptions}</select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes — what did they say?</label>
+        <textarea id="f-notes" class="form-inp" placeholder="Price, availability, inclusions, vibe…" rows="3">${esc(e.notes||'')}</textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Follow-up / Next Action</label>
+        <input id="f-followup" class="form-inp" placeholder="e.g. Call back Thursday, visit showroom…" value="${esc(e.followup||'')}">
+      </div>`;
+  }
+}
+
+function saveEntry(){
+  if(!modalState) return;
+  const isContact = modalState.cardType==='contact';
+  const name  = isContact ? (document.getElementById('f-name')?.value||'').trim() : '';
+  const title = !isContact ? (document.getElementById('f-title')?.value||'').trim() : '';
+  if(isContact && !name){ showToast('Please enter a name'); return; }
+  if(!isContact && !title){ showToast('Please enter a title'); return; }
+
+  const entry = {
+    id:       modalState.editId || uid(),
+    type:     modalState.cardType,
+    name:     name,
+    title:    title,
+    phone:    document.getElementById('f-phone')?.value.trim()||'',
+    date:     document.getElementById('f-date')?.value||'',
+    price:    document.getElementById('f-price')?.value.trim()||'',
+    status:   document.getElementById('f-status')?.value||'called',
+    notes:    document.getElementById('f-notes')?.value.trim()||'',
+    followup: document.getElementById('f-followup')?.value.trim()||'',
+  };
+
+  if(modalState.editId){
+    entries[activeTab] = entries[activeTab].map(e=>e.id===modalState.editId?entry:e);
+    showToast('Updated ✓');
+  } else {
+    entries[activeTab].unshift(entry);
+    showToast('Saved ✓');
+  }
+  save(); renderSection(); closeModal();
+}
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>{ t.style.display='none'; }, 2500);
+}
+
+// ── INIT ──
+buildTabs();
+renderSection();
+</script>
+</body>
+</html>
