@@ -16,152 +16,204 @@
 }
 body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--text); min-height:100vh; }
  
-/* HEADER */
-#header { background:var(--mustard); position:sticky; top:0; z-index:40; box-shadow:0 3px 16px rgba(160,114,8,0.35); }
-.header-top-line { height:2px; background:rgba(255,255,255,0.6); }
-.header-inner { padding:16px 28px 10px; text-align:center; }
-.header-stars { color:rgba(255,255,255,0.5); font-size:9px; letter-spacing:0.6em; font-family:'Cinzel',serif; margin-bottom:6px; }
-.header-title .big { font-family:'Cinzel',serif; font-size:44px; font-weight:600; color:#fff; letter-spacing:0.08em; text-shadow:0 1px 6px rgba(120,80,0,0.3); }
-.header-title .weds { font-family:'Cinzel',serif; font-style:italic; font-size:22px; font-weight:400; color:rgba(255,255,255,0.75); letter-spacing:0.2em; margin:0 12px; vertical-align:middle; }
-.header-sub { font-family:'Cinzel',serif; font-size:9.5px; letter-spacing:0.5em; color:rgba(255,255,255,0.55); margin-top:5px; text-transform:uppercase; }
-.header-orna { display:flex; justify-content:center; align-items:center; gap:8px; margin-top:8px; }
-.header-orna .line { width:50px; height:1px; background:rgba(255,255,255,0.4); }
-.header-orna .sym { color:rgba(255,255,255,0.7); font-size:14px; }
-.header-orna .sym2 { color:rgba(255,255,255,0.5); font-size:9px; }
-.chevron-border { display:block; width:100%; height:10px; }
- 
-/* SYNC BADGE */
-#sync-status {
-  position:absolute; top:12px; right:14px;
-  font-size:10px; color:rgba(255,255,255,0.6);
-  font-family:'Lato',sans-serif; letter-spacing:0.05em;
-  display:flex; align-items:center; gap:5px;
-}
-#sync-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); flex-shrink:0; }
-#sync-dot.live { background:#7fff7f; box-shadow:0 0 5px #7fff7f; }
-#sync-dot.error { background:#ff9090; }
- 
-/* TABS */
-#tabs-bar { display:flex; overflow-x:auto; background:rgba(0,0,0,0.12); padding:0 16px; border-top:1px solid rgba(255,255,255,0.2); scrollbar-width:none; }
-#tabs-bar::-webkit-scrollbar { display:none; }
-.tab-btn { padding:10px 14px; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background:none; border:none; border-bottom:2px solid transparent; color:rgba(255,255,255,0.5); cursor:pointer; white-space:nowrap; font-family:'Lato',sans-serif; transition:color 0.15s; margin-bottom:-1px; }
-.tab-btn.active { color:#fff; border-bottom-color:#fff; }
- 
-/* BODY */
-#body { max-width:900px; margin:0 auto; padding:28px 24px 60px; }
-.section-head { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:20px; }
-.section-title-text { font-family:'Cinzel',serif; font-size:26px; font-weight:400; color:var(--mustard-deep); letter-spacing:0.05em; line-height:1.1; }
-.lotus-divider { display:flex; align-items:center; gap:8px; margin:5px 0 16px; }
-.lotus-divider .line-l { flex:1; height:1px; background:linear-gradient(to right,transparent,var(--mustard-border)); }
-.lotus-divider .line-r { flex:1; height:1px; background:linear-gradient(to left,transparent,var(--mustard-border)); }
-.lotus-divider .sym { color:var(--mustard); font-size:13px; }
-.lotus-divider .sym2 { color:var(--mustard-light); font-size:9px; }
-.section-btns { display:flex; gap:8px; flex-shrink:0; padding-top:4px; }
-.btn-add-contact { background:var(--mustard); color:#fff; border:1px solid var(--mustard-deep); padding:9px 16px; border-radius:4px; font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.08em; font-family:'Lato',sans-serif; box-shadow:0 2px 8px rgba(160,114,8,0.25); }
-.btn-add-note { background:#fff; color:var(--mustard-deep); border:1px solid var(--mustard-border); padding:9px 16px; border-radius:4px; font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.08em; font-family:'Lato',sans-serif; }
- 
-/* CHIPS */
-.chips { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:22px; }
-.chip { display:flex; align-items:center; gap:6px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:11.5px; }
-.chip-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
-.chip-label { color:var(--text-mid); }
-.chip-count { color:var(--text); font-weight:700; }
- 
-/* EMPTY */
-.empty-state { background:#fff; border:2px dashed var(--mustard-border); border-radius:8px; padding:60px 20px; text-align:center; }
-.empty-icon { font-size:36px; margin-bottom:10px; opacity:0.25; }
-.empty-text { font-family:'Cinzel',serif; font-size:13px; color:var(--text-mid); letter-spacing:0.04em; line-height:2; }
-.empty-text span { font-size:11px; opacity:0.6; }
- 
-/* LOADING */
+/* ── LOADING ── */
 #loading-screen { position:fixed; inset:0; background:var(--mustard); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:999; transition:opacity 0.4s; }
 #loading-screen .ls-title { font-family:'Cinzel',serif; font-size:32px; font-weight:600; color:#fff; letter-spacing:0.08em; margin-bottom:8px; }
 #loading-screen .ls-sub { font-family:'Cinzel',serif; font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:0.4em; text-transform:uppercase; margin-bottom:28px; }
 .spinner { width:28px; height:28px; border:3px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:spin 0.8s linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
  
+/* ── HEADER ── */
+#header { background:var(--mustard); position:sticky; top:0; z-index:40; box-shadow:0 3px 16px rgba(160,114,8,0.35); }
+.header-top-line { height:2px; background:rgba(255,255,255,0.6); }
+.header-inner { padding:14px 20px 10px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.header-center { text-align:center; flex:1; }
+.header-title .big { font-family:'Cinzel',serif; font-size:30px; font-weight:600; color:#fff; letter-spacing:0.06em; text-shadow:0 1px 6px rgba(120,80,0,0.3); }
+.header-title .weds { font-family:'Cinzel',serif; font-style:italic; font-size:16px; font-weight:400; color:rgba(255,255,255,0.75); letter-spacing:0.18em; margin:0 8px; vertical-align:middle; }
+.header-sub { font-family:'Cinzel',serif; font-size:8.5px; letter-spacing:0.45em; color:rgba(255,255,255,0.5); margin-top:3px; text-transform:uppercase; }
+.header-orna { display:flex; justify-content:center; align-items:center; gap:6px; margin-top:5px; }
+.header-orna .line { width:30px; height:1px; background:rgba(255,255,255,0.35); }
+.header-orna .sym { color:rgba(255,255,255,0.65); font-size:11px; }
+.header-orna .sym2 { color:rgba(255,255,255,0.45); font-size:8px; }
+ 
+/* Hamburger */
+.hamburger-btn { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); border-radius:6px; padding:8px 10px; cursor:pointer; display:flex; flex-direction:column; gap:4px; flex-shrink:0; }
+.hamburger-btn span { display:block; width:18px; height:2px; background:#fff; border-radius:2px; transition:all 0.25s; }
+ 
+/* Sync */
+#sync-status { display:flex; align-items:center; gap:5px; font-size:10px; color:rgba(255,255,255,0.6); font-family:'Lato',sans-serif; flex-shrink:0; min-width:60px; justify-content:flex-end; }
+#sync-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); flex-shrink:0; }
+#sync-dot.live { background:#7fff7f; box-shadow:0 0 5px #7fff7f; }
+#sync-dot.error { background:#ff9090; }
+ 
+.chevron-border { display:block; width:100%; height:8px; }
+ 
+/* ── DRAWER MENU ── */
+#drawer-overlay { position:fixed; inset:0; background:rgba(80,50,0,0.4); z-index:60; display:none; }
+#drawer-overlay.open { display:block; }
+#drawer { position:fixed; left:0; top:0; bottom:0; width:280px; background:var(--offwhite); z-index:70; transform:translateX(-100%); transition:transform 0.3s ease; display:flex; flex-direction:column; box-shadow:4px 0 24px rgba(80,50,0,0.2); }
+#drawer.open { transform:translateX(0); }
+.drawer-header { background:var(--mustard); padding:20px 18px 16px; }
+.drawer-header-title { font-family:'Cinzel',serif; font-size:18px; font-weight:600; color:#fff; letter-spacing:0.05em; }
+.drawer-header-sub { font-size:10px; color:rgba(255,255,255,0.6); letter-spacing:0.2em; text-transform:uppercase; margin-top:3px; }
+.drawer-section-label { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-dim); font-weight:700; padding:14px 18px 6px; }
+.drawer-item { display:flex; align-items:center; gap:10px; padding:11px 18px; cursor:pointer; transition:background 0.15s; border:none; background:none; width:100%; text-align:left; font-family:'Lato',sans-serif; font-size:13px; font-weight:500; color:var(--text-mid); }
+.drawer-item:hover { background:var(--mustard-pale); }
+.drawer-item.active { background:var(--mustard-pale); color:var(--mustard-deep); font-weight:700; border-left:3px solid var(--mustard); }
+.drawer-item .d-icon { font-size:16px; width:22px; text-align:center; }
+.drawer-item .d-count { margin-left:auto; background:var(--mustard-border); color:var(--mustard-deep); font-size:10px; font-weight:700; padding:2px 7px; border-radius:10px; }
+.drawer-divider { height:1px; background:var(--border-light); margin:6px 0; }
+.drawer-footer { margin-top:auto; padding:14px 18px; border-top:1px solid var(--border-light); }
+.btn-new-page { width:100%; background:var(--mustard); color:#fff; border:none; border-radius:4px; padding:10px; font-family:'Cinzel',serif; font-size:12px; font-weight:400; letter-spacing:0.08em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; }
+.btn-new-page:hover { background:var(--mustard-deep); }
+ 
+/* ── CURRENT PAGE LABEL ── */
+#page-label { background:var(--mustard-pale); border-bottom:1px solid var(--mustard-border); padding:8px 20px; display:flex; align-items:center; gap:8px; }
+#page-label-text { font-family:'Cinzel',serif; font-size:13px; color:var(--mustard-deep); font-weight:400; letter-spacing:0.04em; }
+ 
+/* ── BODY ── */
+#body { max-width:900px; margin:0 auto; padding:24px 20px 60px; }
+.section-head { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:20px; }
+.section-title-text { font-family:'Cinzel',serif; font-size:24px; font-weight:400; color:var(--mustard-deep); letter-spacing:0.05em; line-height:1.1; }
+.lotus-divider { display:flex; align-items:center; gap:8px; margin:5px 0 14px; }
+.lotus-divider .line-l { flex:1; height:1px; background:linear-gradient(to right,transparent,var(--mustard-border)); }
+.lotus-divider .line-r { flex:1; height:1px; background:linear-gradient(to left,transparent,var(--mustard-border)); }
+.lotus-divider .sym { color:var(--mustard); font-size:12px; }
+.lotus-divider .sym2 { color:var(--mustard-light); font-size:8px; }
+.section-btns { display:flex; gap:8px; flex-shrink:0; padding-top:4px; }
+.btn-add-contact { background:var(--mustard); color:#fff; border:1px solid var(--mustard-deep); padding:9px 16px; border-radius:4px; font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.08em; font-family:'Lato',sans-serif; box-shadow:0 2px 8px rgba(160,114,8,0.25); }
+.btn-add-note { background:#fff; color:var(--mustard-deep); border:1px solid var(--mustard-border); padding:9px 16px; border-radius:4px; font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.08em; font-family:'Lato',sans-serif; }
+ 
+/* CHIPS */
+.chips { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:20px; }
+.chip { display:flex; align-items:center; gap:6px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:11px; }
+.chip-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.chip-label { color:var(--text-mid); }
+.chip-count { color:var(--text); font-weight:700; }
+ 
+/* EMPTY */
+.empty-state { background:#fff; border:2px dashed var(--mustard-border); border-radius:8px; padding:50px 20px; text-align:center; }
+.empty-icon { font-size:32px; margin-bottom:10px; opacity:0.25; }
+.empty-text { font-family:'Cinzel',serif; font-size:13px; color:var(--text-mid); letter-spacing:0.04em; line-height:2; }
+ 
 /* ENTRIES */
 #entries-list { display:flex; flex-direction:column; gap:10px; }
-.entry-card { background:#fff; border:1px solid var(--border-light); border-left:4px solid var(--mustard-border); border-radius:6px; padding:16px 20px; box-shadow:0 1px 6px rgba(160,114,8,0.07); }
+.entry-card { background:#fff; border:1px solid var(--border-light); border-left:4px solid var(--mustard-border); border-radius:6px; padding:14px 16px; box-shadow:0 1px 6px rgba(160,114,8,0.07); cursor:grab; transition:box-shadow 0.2s, opacity 0.2s; user-select:none; }
 .entry-card.note-card { background:var(--mustard-pale); }
-.entry-inner { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
-.entry-type-label { font-size:9.5px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-dim); margin-bottom:4px; font-weight:700; }
+.entry-card.dragging { opacity:0.4; cursor:grabbing; }
+.entry-card.drag-over { box-shadow:0 0 0 2px var(--mustard); }
+.entry-inner { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+.drag-handle { color:var(--border); font-size:14px; cursor:grab; padding:2px 4px 0 0; flex-shrink:0; line-height:1; }
+.entry-content { flex:1; min-width:0; }
+.entry-type-label { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-dim); margin-bottom:3px; font-weight:700; }
 .entry-card.note-card .entry-type-label { color:var(--mustard); }
-.entry-name { font-family:'Cinzel',serif; font-size:15.5px; font-weight:400; color:var(--text); margin-bottom:7px; letter-spacing:0.02em; }
-.entry-meta { display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
-.status-badge { font-size:10.5px; font-weight:700; letter-spacing:0.08em; padding:3px 10px; border-radius:20px; }
-.price-badge { font-size:12px; font-weight:700; color:var(--mustard-deep); background:#fef3cc; padding:3px 10px; border-radius:12px; border:1px solid var(--mustard-border); }
-.meta-info { font-size:11.5px; color:var(--text-dim); }
-.entry-notes { font-size:13px; color:var(--text-mid); line-height:1.7; margin-top:6px; }
-.entry-followup { font-size:13px; color:var(--mustard-deep); margin-top:5px; font-weight:700; }
-.btn-delete { background:var(--mustard-pale); border:1px solid var(--border); border-radius:4px; padding:4px 8px; cursor:pointer; font-size:12px; color:var(--text-mid); flex-shrink:0; }
+.entry-name { font-family:'Cinzel',serif; font-size:15px; font-weight:400; color:var(--text); margin-bottom:6px; letter-spacing:0.02em; }
+.entry-meta { display:flex; flex-wrap:wrap; gap:5px; align-items:center; }
+.status-badge { font-size:10px; font-weight:700; letter-spacing:0.08em; padding:3px 9px; border-radius:20px; }
+.price-badge { font-size:11px; font-weight:700; color:var(--mustard-deep); background:#fef3cc; padding:3px 9px; border-radius:12px; border:1px solid var(--mustard-border); }
+.meta-info { font-size:11px; color:var(--text-dim); }
+.entry-notes { font-size:12.5px; color:var(--text-mid); line-height:1.65; margin-top:5px; }
+.entry-followup { font-size:12.5px; color:var(--mustard-deep); margin-top:4px; font-weight:700; }
+.entry-actions { display:flex; gap:5px; flex-shrink:0; }
+.btn-edit, .btn-delete { background:var(--mustard-pale); border:1px solid var(--border); border-radius:4px; padding:4px 8px; cursor:pointer; font-size:12px; color:var(--text-mid); }
+.btn-edit:hover { background:#e8f0ff; border-color:#a0b8e0; }
 .btn-delete:hover { background:#fdeaea; border-color:#f0a0a0; }
  
 /* MODAL */
 .modal-overlay { position:fixed; inset:0; background:rgba(80,50,0,0.45); backdrop-filter:blur(4px); z-index:100; display:none; align-items:center; justify-content:center; padding:16px; }
 .modal-overlay.open { display:flex; }
-.modal-box { background:#fff; border-radius:8px; border:1px solid var(--border); border-top:3px solid var(--mustard); width:100%; max-width:540px; max-height:90vh; overflow-y:auto; padding:28px; box-shadow:0 24px 64px rgba(80,50,0,0.22); }
-.modal-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid var(--border-light); }
-.modal-title { font-family:'Cinzel',serif; font-size:18px; font-weight:400; color:var(--mustard-deep); letter-spacing:0.05em; }
+.modal-box { background:#fff; border-radius:8px; border:1px solid var(--border); border-top:3px solid var(--mustard); width:100%; max-width:540px; max-height:90vh; overflow-y:auto; padding:26px; box-shadow:0 24px 64px rgba(80,50,0,0.22); }
+.modal-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border-light); }
+.modal-title { font-family:'Cinzel',serif; font-size:17px; font-weight:400; color:var(--mustard-deep); letter-spacing:0.04em; }
 .modal-close { background:none; border:none; font-size:18px; cursor:pointer; color:var(--text-dim); }
-.form-group { margin-bottom:14px; }
-.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
-label.form-label { display:block; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text-mid); margin-bottom:5px; font-weight:700; }
-input.form-inp, select.form-inp, textarea.form-inp { width:100%; background:var(--offwhite); border:1px solid var(--border); border-radius:4px; padding:9px 12px; font-size:14px; color:var(--text); font-family:'Lato',sans-serif; outline:none; appearance:none; -webkit-appearance:none; }
+.form-group { margin-bottom:13px; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:13px; }
+label.form-label { display:block; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--text-mid); margin-bottom:4px; font-weight:700; }
+input.form-inp, select.form-inp, textarea.form-inp { width:100%; background:var(--offwhite); border:1px solid var(--border); border-radius:4px; padding:9px 11px; font-size:13.5px; color:var(--text); font-family:'Lato',sans-serif; outline:none; appearance:none; -webkit-appearance:none; }
 input.form-inp:focus, select.form-inp:focus, textarea.form-inp:focus { border-color:var(--mustard); }
-textarea.form-inp { resize:vertical; min-height:88px; }
-.modal-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:18px; }
+textarea.form-inp { resize:vertical; min-height:80px; }
+.modal-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:16px; }
 .btn-cancel { background:none; border:1px solid var(--border); border-radius:4px; padding:9px 18px; font-size:12px; color:var(--text-mid); cursor:pointer; font-family:'Lato',sans-serif; font-weight:700; letter-spacing:0.08em; }
-.btn-save { background:var(--mustard); border:1px solid var(--mustard-deep); border-radius:4px; padding:9px 22px; font-size:12px; font-weight:700; color:#fff; cursor:pointer; font-family:'Lato',sans-serif; letter-spacing:0.08em; box-shadow:0 2px 8px rgba(160,114,8,0.3); }
+.btn-save { background:var(--mustard); border:1px solid var(--mustard-deep); border-radius:4px; padding:9px 22px; font-size:12px; font-weight:700; color:#fff; cursor:pointer; font-family:'Lato',sans-serif; letter-spacing:0.08em; }
  
 /* TOAST */
-#toast { position:fixed; bottom:20px; right:20px; background:var(--mustard); color:#fff; padding:10px 20px; border-radius:4px; font-size:13px; font-weight:700; border:1px solid var(--mustard-deep); box-shadow:0 4px 16px rgba(160,114,8,0.4); z-index:200; letter-spacing:0.05em; display:none; }
+#toast { position:fixed; bottom:20px; right:20px; background:var(--mustard); color:#fff; padding:10px 18px; border-radius:4px; font-size:13px; font-weight:700; border:1px solid var(--mustard-deep); box-shadow:0 4px 16px rgba(160,114,8,0.4); z-index:200; letter-spacing:0.05em; display:none; }
+ 
+/* Guest list specific — simple table style */
+.guest-section-hint { font-size:12px; color:var(--text-dim); margin-bottom:16px; font-style:italic; }
  
 @media(max-width:600px){
-  .header-title .big{font-size:28px;}
-  .header-title .weds{font-size:15px;margin:0 6px;}
+  .header-title .big{font-size:22px;}
+  .header-title .weds{font-size:13px;margin:0 5px;}
   .form-row{grid-template-columns:1fr;}
-  #body{padding:20px 16px 50px;}
-  #sync-status{display:none;}
+  #body{padding:18px 14px 50px;}
+  #drawer{width:260px;}
 }
 </style>
 </head>
 <body>
  
-<!-- LOADING SCREEN -->
+<!-- LOADING -->
 <div id="loading-screen">
   <div class="ls-title">Qt weds Headache</div>
   <div class="ls-sub">Marwari Wedding Planner</div>
   <div class="spinner"></div>
 </div>
  
+<!-- DRAWER OVERLAY -->
+<div id="drawer-overlay" onclick="closeDrawer()"></div>
+ 
+<!-- DRAWER -->
+<div id="drawer">
+  <div class="drawer-header">
+    <div class="drawer-header-title">Qt weds Headache</div>
+    <div class="drawer-header-sub">Marwari Wedding Planner</div>
+  </div>
+  <div class="drawer-section-label">Wedding Categories</div>
+  <div id="drawer-tabs"></div>
+  <div class="drawer-divider"></div>
+  <div class="drawer-section-label">Custom Pages</div>
+  <div id="drawer-custom-pages"></div>
+  <div class="drawer-footer">
+    <button class="btn-new-page" onclick="openNewPageModal()">✦ &nbsp;Create New Page</button>
+  </div>
+</div>
+ 
 <!-- HEADER -->
 <div id="header">
   <div class="header-top-line"></div>
-  <div class="header-inner" style="position:relative;">
-    <div id="sync-status"><span id="sync-dot"></span><span id="sync-label">connecting…</span></div>
-    <div class="header-stars">✦ ✦ ✦</div>
-    <div class="header-title">
-      <span class="big">Qt</span>
-      <span class="weds">weds</span>
-      <span class="big">Headache</span>
+  <div class="header-inner">
+    <button class="hamburger-btn" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="header-center">
+      <div class="header-title">
+        <span class="big">Qt</span>
+        <span class="weds">weds</span>
+        <span class="big">Headache</span>
+      </div>
+      <div class="header-sub">Marwari Wedding Planner</div>
+      <div class="header-orna">
+        <div class="line"></div><span class="sym">✾</span>
+        <span class="sym2">◈</span><span class="sym">✾</span>
+        <div class="line"></div>
+      </div>
     </div>
-    <div class="header-sub">Marwari Wedding Planner</div>
-    <div class="header-orna">
-      <div class="line"></div><span class="sym">✾</span>
-      <span class="sym2">◈</span><span class="sym">✾</span>
-      <div class="line"></div>
-    </div>
+    <div id="sync-status"><span id="sync-dot"></span><span id="sync-label">…</span></div>
   </div>
-  <svg class="chevron-border" viewBox="0 0 600 10" preserveAspectRatio="none">
+  <svg class="chevron-border" viewBox="0 0 600 8" preserveAspectRatio="none">
     <defs>
-      <pattern id="chev" x="0" y="0" width="20" height="10" patternUnits="userSpaceOnUse">
-        <polyline points="0,10 10,1 20,10" fill="none" stroke="white" stroke-width="1.1" opacity="0.25"/>
+      <pattern id="chev" x="0" y="0" width="20" height="8" patternUnits="userSpaceOnUse">
+        <polyline points="0,8 10,1 20,8" fill="none" stroke="white" stroke-width="1" opacity="0.22"/>
       </pattern>
     </defs>
-    <rect width="100%" height="10" fill="url(#chev)"/>
+    <rect width="100%" height="8" fill="url(#chev)"/>
   </svg>
-  <div id="tabs-bar"></div>
+</div>
+ 
+<!-- PAGE LABEL BAR -->
+<div id="page-label">
+  <span id="page-label-text"></span>
 </div>
  
 <!-- BODY -->
@@ -175,16 +227,13 @@ textarea.form-inp { resize:vertical; min-height:88px; }
         <div class="line-r"></div>
       </div>
     </div>
-    <div class="section-btns">
-      <button class="btn-add-contact" id="btn-contact" onclick="openAdd('contact')"></button>
-      <button class="btn-add-note" onclick="openAdd('note')">+ ADD NOTE</button>
-    </div>
+    <div class="section-btns" id="section-btns"></div>
   </div>
   <div class="chips" id="chips"></div>
   <div id="entries-area"></div>
 </div>
  
-<!-- MODAL -->
+<!-- ENTRY MODAL -->
 <div class="modal-overlay" id="modal" onclick="overlayClick(event)">
   <div class="modal-box">
     <div class="modal-head">
@@ -199,15 +248,36 @@ textarea.form-inp { resize:vertical; min-height:88px; }
   </div>
 </div>
  
+<!-- NEW PAGE MODAL -->
+<div class="modal-overlay" id="new-page-modal" onclick="npOverlayClick(event)">
+  <div class="modal-box" style="max-width:400px;">
+    <div class="modal-head">
+      <div class="modal-title">Create New Page</div>
+      <button class="modal-close" onclick="closeNewPageModal()">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Page Name</label>
+      <input id="np-name" class="form-inp" placeholder="e.g. Guest List, Decoration, Budget…">
+    </div>
+    <div class="form-group">
+      <label class="form-label">Icon (emoji)</label>
+      <input id="np-icon" class="form-inp" placeholder="e.g. 👥 💐 💰" maxlength="4" style="font-size:20px;">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeNewPageModal()">CANCEL</button>
+      <button class="btn-save" onclick="createNewPage()">CREATE</button>
+    </div>
+  </div>
+</div>
+ 
 <div id="toast"></div>
  
-<!-- FIREBASE -->
 <script type="module">
-import { initializeApp }                           from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { initializeApp }                              from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, doc, setDoc,
-         deleteDoc, onSnapshot, query, orderBy }   from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+         deleteDoc, onSnapshot, query, orderBy,
+         getDocs }                                    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
  
-// ── CONFIG ──
 const firebaseConfig = {
   apiKey:            "AIzaSyDxF-Y8fNz-5iCiyvaSMuHkFDVxgMFVXM8",
   authDomain:        "qt-weds-headache.firebaseapp.com",
@@ -216,73 +286,43 @@ const firebaseConfig = {
   messagingSenderId: "308349411711",
   appId:             "1:308349411711:web:bd9183e07868ca052c3a4a"
 };
- 
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
  
-// ── SECTION CONFIG ──
-const SECTIONS = {
-  food:    { label:"Food Catering",  icon:"🍽️", priceLabel:"Price per Plate / Package", showPhone:true,
-    statuses:[
-      {value:"pending", badge:"Pending",           color:"#b8982a"},
-      {value:"called",  badge:"Called",             color:"#c9920a"},
-      {value:"special", badge:"Tasting Planned 🍴", color:"#8a5e00"},
-      {value:"booked",  badge:"Booked ✓",           color:"#2d7a4f"},
-      {value:"done",    badge:"Done ✓",             color:"#1a5a8a"},
-      {value:"rejected",badge:"Rejected",           color:"#a02020"},
-    ]},
-  stay:    { label:"Stay & Venue",   icon:"🏨", priceLabel:"Price per Night / Package", showPhone:true,
-    statuses:[
-      {value:"pending", badge:"Pending",        color:"#b8982a"},
-      {value:"called",  badge:"Called",          color:"#c9920a"},
-      {value:"special", badge:"Site Visit 🏛️",   color:"#8a5e00"},
-      {value:"booked",  badge:"Booked ✓",        color:"#2d7a4f"},
-      {value:"done",    badge:"Done ✓",          color:"#1a5a8a"},
-      {value:"rejected",badge:"Rejected",        color:"#a02020"},
-    ]},
-  video:   { label:"Videographer",  icon:"🎥", priceLabel:"Package Price", showPhone:true,
-    statuses:[
-      {value:"pending", badge:"Pending",              color:"#b8982a"},
-      {value:"called",  badge:"Called",               color:"#c9920a"},
-      {value:"special", badge:"Portfolio Review 🎬",  color:"#8a5e00"},
-      {value:"booked",  badge:"Booked ✓",             color:"#2d7a4f"},
-      {value:"done",    badge:"Done ✓",               color:"#1a5a8a"},
-      {value:"rejected",badge:"Rejected",             color:"#a02020"},
-    ]},
-  sangeet: { label:"Sangeet",        icon:"🎶", priceLabel:"Price / Fee", showPhone:false,
-    statuses:[
-      {value:"pending", badge:"Pending",         color:"#b8982a"},
-      {value:"called",  badge:"Called",          color:"#c9920a"},
-      {value:"special", badge:"Demo Planned 🎤", color:"#8a5e00"},
-      {value:"booked",  badge:"Booked ✓",        color:"#2d7a4f"},
-      {value:"done",    badge:"Done ✓",          color:"#1a5a8a"},
-      {value:"rejected",badge:"Rejected",        color:"#a02020"},
-    ]},
-  bride:   { label:"Bride Dress",    icon:"👰", priceLabel:"Price / Budget", showPhone:true,
-    statuses:[
-      {value:"pending", badge:"Pending",          color:"#b8982a"},
-      {value:"called",  badge:"Called",           color:"#c9920a"},
-      {value:"special", badge:"Trial Planned 👗", color:"#8a5e00"},
-      {value:"booked",  badge:"Ordered ✓",        color:"#2d7a4f"},
-      {value:"done",    badge:"Done ✓",           color:"#1a5a8a"},
-      {value:"rejected",badge:"Rejected",         color:"#a02020"},
-    ]},
-  groom:   { label:"Groom Dress",    icon:"🤵", priceLabel:"Price / Budget", showPhone:true,
-    statuses:[
-      {value:"pending", badge:"Pending",          color:"#b8982a"},
-      {value:"called",  badge:"Called",           color:"#c9920a"},
-      {value:"special", badge:"Trial Planned 🧵", color:"#8a5e00"},
-      {value:"booked",  badge:"Ordered ✓",        color:"#2d7a4f"},
-      {value:"done",    badge:"Done ✓",           color:"#1a5a8a"},
-      {value:"rejected",badge:"Rejected",         color:"#a02020"},
-    ]},
+// ── BUILT-IN SECTIONS ──
+const BUILT_IN = {
+  food:    { label:"Food Catering",  icon:"🍽️", priceLabel:"Price per Plate / Package", showPhone:true, custom:false },
+  stay:    { label:"Stay & Venue",   icon:"🏨", priceLabel:"Price per Night / Package", showPhone:true, custom:false },
+  video:   { label:"Videographer",  icon:"🎥", priceLabel:"Package Price",              showPhone:true, custom:false },
+  sangeet: { label:"Sangeet",        icon:"🎶", priceLabel:"Price / Fee",               showPhone:false,custom:false },
+  bride:   { label:"Bride Dress",    icon:"👰", priceLabel:"Price / Budget",            showPhone:true, custom:false },
+  groom:   { label:"Groom Dress",    icon:"🤵", priceLabel:"Price / Budget",            showPhone:true, custom:false },
 };
  
-const BORDER_COLORS = {
-  pending:"#d4aa30",called:"#c9920a",special:"#8a5e00",
-  booked:"#2d7a4f",done:"#1a5a8a",rejected:"#a02020",
-};
-const BADGE_STYLES = {
+const STD_STATUSES = [
+  {value:"pending", badge:"Pending",  color:"#b8982a"},
+  {value:"called",  badge:"Called",   color:"#c9920a"},
+  {value:"special", badge:"In Progress 🔄", color:"#8a5e00"},
+  {value:"booked",  badge:"Booked ✓", color:"#2d7a4f"},
+  {value:"done",    badge:"Done ✓",   color:"#1a5a8a"},
+  {value:"rejected",badge:"Rejected", color:"#a02020"},
+];
+ 
+const FOOD_STATUSES = STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Tasting Planned 🍴"}:s);
+const STAY_STATUSES = STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Site Visit 🏛️"}:s);
+const VIDEO_STATUSES= STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Portfolio Review 🎬"}:s);
+const SANG_STATUSES = STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Demo Planned 🎤"}:s);
+const DRESS_STATUSES= STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Trial Planned 👗"}:s);
+ 
+BUILT_IN.food.statuses    = FOOD_STATUSES;
+BUILT_IN.stay.statuses    = STAY_STATUSES;
+BUILT_IN.video.statuses   = VIDEO_STATUSES;
+BUILT_IN.sangeet.statuses = SANG_STATUSES;
+BUILT_IN.bride.statuses   = DRESS_STATUSES;
+BUILT_IN.groom.statuses   = DRESS_STATUSES.map(s=>s.value==="special"?{...s,badge:"Trial Planned 🧵"}:s);
+ 
+const BORDER_COLORS = {pending:"#d4aa30",called:"#c9920a",special:"#8a5e00",booked:"#2d7a4f",done:"#1a5a8a",rejected:"#a02020"};
+const BADGE_STYLES  = {
   pending: {bg:"#fef9d8",color:"#6b5010",border:"#e8d060"},
   called:  {bg:"#fff3cc",color:"#7a5a00",border:"#f0c840"},
   special: {bg:"#feeebb",color:"#5a3800",border:"#d4a020"},
@@ -291,100 +331,195 @@ const BADGE_STYLES = {
   rejected:{bg:"#faeaea",color:"#701010",border:"#e09090"},
 };
  
-const TABS = Object.keys(SECTIONS);
- 
 // ── STATE ──
-let activeTab  = "food";
-let allEntries = Object.fromEntries(TABS.map(k=>[k,[]]));
-let modalState = null;
-let unsubscribes = {};
+let SECTIONS       = {...BUILT_IN};
+let customPages    = {}; // id -> {label,icon}
+let activeTab      = "food";
+let allEntries     = {};
+let modalState     = null;
+let unsubscribes   = {};
+let dragSrcId      = null;
  
 function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
 function esc(s){ const d=document.createElement('div'); d.textContent=String(s||''); return d.innerHTML; }
+function getSect(){ return SECTIONS[activeTab]; }
  
 // ── SYNC STATUS ──
 function setSyncStatus(state){
-  const dot   = document.getElementById('sync-dot');
-  const label = document.getElementById('sync-label');
-  if(state==='live'){ dot.className='live'; label.textContent='live'; }
-  else if(state==='error'){ dot.className='error'; label.textContent='error'; }
-  else { dot.className=''; label.textContent='connecting…'; }
+  const dot=document.getElementById('sync-dot'), lbl=document.getElementById('sync-label');
+  if(state==='live'){dot.className='live';lbl.textContent='live';}
+  else if(state==='error'){dot.className='error';lbl.textContent='error';}
+  else{dot.className='';lbl.textContent='…';}
 }
  
-// ── REAL-TIME LISTENER per tab ──
+// ── SUBSCRIBE TAB ──
 function subscribeTab(tab){
-  if(unsubscribes[tab]) return; // already subscribed
-  const q = query(collection(db, tab), orderBy("createdAt","desc"));
-  unsubscribes[tab] = onSnapshot(q,
-    snap => {
-      allEntries[tab] = snap.docs.map(d=>({id:d.id,...d.data()}));
+  if(unsubscribes[tab]) return;
+  if(!allEntries[tab]) allEntries[tab]=[];
+  const q=query(collection(db,tab),orderBy("order","asc"));
+  unsubscribes[tab]=onSnapshot(q,
+    snap=>{
+      allEntries[tab]=snap.docs.map(d=>({id:d.id,...d.data()}));
       setSyncStatus('live');
       if(tab===activeTab) renderSection();
-      // hide loader once first tab loaded
-      const ls = document.getElementById('loading-screen');
-      if(ls) { ls.style.opacity='0'; setTimeout(()=>ls.remove(),400); }
+      const ls=document.getElementById('loading-screen');
+      if(ls){ls.style.opacity='0';setTimeout(()=>ls.remove(),400);}
     },
-    err => { console.error(err); setSyncStatus('error'); }
+    err=>{console.error(err);setSyncStatus('error');}
   );
 }
  
-// ── TABS ──
-function buildTabs(){
-  document.getElementById('tabs-bar').innerHTML = TABS.map(key=>`
-    <button class="tab-btn${key===activeTab?' active':''}" onclick="switchTab('${key}')">
-      ${SECTIONS[key].icon} ${SECTIONS[key].label}
-    </button>`).join('');
+// ── CUSTOM PAGES (stored in Firestore _meta collection) ──
+async function loadCustomPages(){
+  try{
+    const snap=await getDocs(collection(db,'_meta'));
+    snap.docs.forEach(d=>{
+      if(d.id==='custom_pages'){
+        const data=d.data();
+        customPages=data.pages||{};
+        Object.entries(customPages).forEach(([id,pg])=>{
+          SECTIONS[id]={...pg,custom:true,priceLabel:"Amount / Detail",showPhone:false,statuses:STD_STATUSES};
+          if(!allEntries[id]) allEntries[id]=[];
+        });
+      }
+    });
+  }catch(e){console.error(e);}
+  buildDrawer();
 }
  
-window.switchTab = function(key){
-  activeTab=key; buildTabs(); subscribeTab(key); renderSection();
+async function saveCustomPages(){
+  await setDoc(doc(db,'_meta','custom_pages'),{pages:customPages});
+}
+ 
+// ── DRAWER ──
+function buildDrawer(){
+  // built-in tabs
+  document.getElementById('drawer-tabs').innerHTML =
+    Object.entries(BUILT_IN).map(([key,cfg])=>`
+      <button class="drawer-item${activeTab===key?' active':''}" onclick="switchTab('${key}')">
+        <span class="d-icon">${cfg.icon}</span>
+        ${cfg.label}
+        <span class="d-count">${(allEntries[key]||[]).length}</span>
+      </button>`).join('');
+ 
+  // custom pages
+  const cpKeys=Object.keys(customPages);
+  document.getElementById('drawer-custom-pages').innerHTML = cpKeys.length===0
+    ? `<div style="padding:8px 18px;font-size:12px;color:var(--text-dim);font-style:italic;">No custom pages yet</div>`
+    : cpKeys.map(key=>`
+        <button class="drawer-item${activeTab===key?' active':''}" onclick="switchTab('${key}')">
+          <span class="d-icon">${customPages[key].icon||'📄'}</span>
+          ${customPages[key].label}
+          <span class="d-count">${(allEntries[key]||[]).length}</span>
+        </button>`).join('');
+}
+ 
+window.toggleDrawer=function(){
+  document.getElementById('drawer').classList.toggle('open');
+  document.getElementById('drawer-overlay').classList.toggle('open');
+};
+window.closeDrawer=function(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
 };
  
-// ── RENDER ──
+window.switchTab=function(key){
+  activeTab=key;
+  closeDrawer();
+  subscribeTab(key);
+  buildDrawer();
+  renderSection();
+};
+ 
+// ── NEW PAGE MODAL ──
+window.openNewPageModal=function(){
+  closeDrawer();
+  document.getElementById('np-name').value='';
+  document.getElementById('np-icon').value='';
+  document.getElementById('new-page-modal').classList.add('open');
+};
+window.closeNewPageModal=function(){
+  document.getElementById('new-page-modal').classList.remove('open');
+};
+window.npOverlayClick=function(e){
+  if(e.target===document.getElementById('new-page-modal')) closeNewPageModal();
+};
+window.createNewPage=function(){
+  const name=(document.getElementById('np-name').value||'').trim();
+  const icon=(document.getElementById('np-icon').value||'📄').trim();
+  if(!name){showToast('Please enter a page name');return;}
+  const id='custom_'+uid();
+  customPages[id]={label:name,icon};
+  SECTIONS[id]={label:name,icon,custom:true,priceLabel:"Amount / Detail",showPhone:false,statuses:STD_STATUSES};
+  allEntries[id]=[];
+  saveCustomPages();
+  buildDrawer();
+  closeNewPageModal();
+  switchTab(id);
+  showToast(`"${name}" page created ✓`);
+};
+ 
+// ── RENDER SECTION ──
 function renderSection(){
-  const cfg  = SECTIONS[activeTab];
-  const list = allEntries[activeTab];
+  const cfg=getSect();
+  if(!cfg) return;
  
-  document.getElementById('section-title').textContent = cfg.icon+'  '+cfg.label;
-  document.getElementById('btn-contact').textContent   = cfg.showPhone?'+ ADD CONTACT':'+ ADD ENTRY';
+  // page label bar
+  document.getElementById('page-label-text').textContent=cfg.icon+'  '+cfg.label;
+  document.getElementById('section-title').textContent=cfg.icon+'  '+cfg.label;
  
-  // chips
-  const counts = Object.fromEntries(cfg.statuses.map(s=>[s.value,0]));
-  list.forEach(e=>{ if(counts[e.status]!==undefined) counts[e.status]++; });
-  document.getElementById('chips').innerHTML = cfg.statuses.map(s=>`
-    <div class="chip">
-      <span class="chip-dot" style="background:${s.color}"></span>
-      <span class="chip-label">${esc(s.badge)}</span>
-      <span class="chip-count">${counts[s.value]}</span>
-    </div>`).join('');
+  // buttons
+  const btns=document.getElementById('section-btns');
+  if(cfg.custom){
+    btns.innerHTML=`<button class="btn-add-contact" onclick="openAdd('note')">+ ADD CARD</button>`;
+  } else {
+    btns.innerHTML=`
+      <button class="btn-add-contact" onclick="openAdd('contact')">${cfg.showPhone?'+ ADD CONTACT':'+ ADD ENTRY'}</button>
+      <button class="btn-add-note" onclick="openAdd('note')">+ ADD NOTE</button>`;
+  }
+ 
+  // chips (only for built-in with statuses)
+  const list=allEntries[activeTab]||[];
+  if(!cfg.custom){
+    const counts=Object.fromEntries(cfg.statuses.map(s=>[s.value,0]));
+    list.forEach(e=>{if(counts[e.status]!==undefined)counts[e.status]++;});
+    document.getElementById('chips').innerHTML=cfg.statuses.map(s=>`
+      <div class="chip">
+        <span class="chip-dot" style="background:${s.color}"></span>
+        <span class="chip-label">${esc(s.badge)}</span>
+        <span class="chip-count">${counts[s.value]}</span>
+      </div>`).join('');
+  } else {
+    document.getElementById('chips').innerHTML='';
+  }
  
   // entries
-  const area = document.getElementById('entries-area');
+  const area=document.getElementById('entries-area');
   if(list.length===0){
     area.innerHTML=`
       <div class="empty-state">
         <div class="empty-icon">${cfg.icon}</div>
         <div class="empty-text">Nothing logged yet for ${esc(cfg.label)}.<br>
-          <span>Use the buttons above to begin tracking.</span></div>
+          <span style="font-size:11px;opacity:0.6">Use the buttons above to begin.</span></div>
       </div>`;
   } else {
     area.innerHTML=`<div id="entries-list">${list.map(entryHTML).join('')}</div>`;
+    attachDragHandlers();
   }
 }
  
 function entryHTML(entry){
-  const cfg = SECTIONS[activeTab];
-  const st  = cfg.statuses.find(s=>s.value===entry.status)||cfg.statuses[0];
-  const bs  = BADGE_STYLES[entry.status]||BADGE_STYLES.pending;
-  const dateStr = entry.date
-    ? new Date(entry.date+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})
-    : '';
-  const isNote  = entry.type==='note';
-  const borderC = BORDER_COLORS[entry.status]||'#e8c456';
+  const cfg=getSect();
+  const isNote=entry.type==='note'||cfg.custom;
+  const st=cfg.statuses?(cfg.statuses.find(s=>s.value===entry.status)||cfg.statuses[0]):STD_STATUSES[0];
+  const bs=BADGE_STYLES[entry.status]||BADGE_STYLES.pending;
+  const dateStr=entry.date?new Date(entry.date+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'';
+  const borderC=BORDER_COLORS[entry.status]||'#e8c456';
   return `
-    <div class="entry-card${isNote?' note-card':''}" style="border-left-color:${borderC}">
+    <div class="entry-card${isNote?' note-card':''}" style="border-left-color:${borderC}" draggable="true" data-id="${esc(entry.id)}">
       <div class="entry-inner">
-        <div style="flex:1">
+        <span class="drag-handle" title="Drag to reorder">⠿</span>
+        <div class="entry-content">
           <div class="entry-type-label">${isNote?'📌 Note':'📞 Contact'}</div>
           <div class="entry-name">${esc(isNote?entry.title:entry.name)}</div>
           <div class="entry-meta">
@@ -396,52 +531,104 @@ function entryHTML(entry){
           ${entry.notes?`<div class="entry-notes">💬 ${esc(entry.notes)}</div>`:''}
           ${!isNote&&entry.followup?`<div class="entry-followup">→ ${esc(entry.followup)}</div>`:''}
         </div>
-        <button class="btn-delete" onclick="deleteEntry('${esc(entry.id)}','${activeTab}')">🗑</button>
+        <div class="entry-actions">
+          <button class="btn-edit"   onclick="openEdit('${esc(entry.id)}')">✏️</button>
+          <button class="btn-delete" onclick="deleteEntry('${esc(entry.id)}')">🗑</button>
+        </div>
       </div>
     </div>`;
 }
  
+// ── DRAG & DROP REORDER ──
+function attachDragHandlers(){
+  const list=document.getElementById('entries-list');
+  if(!list) return;
+  list.querySelectorAll('.entry-card').forEach(card=>{
+    card.addEventListener('dragstart',e=>{
+      dragSrcId=card.dataset.id;
+      card.classList.add('dragging');
+      e.dataTransfer.effectAllowed='move';
+    });
+    card.addEventListener('dragend',()=>{
+      card.classList.remove('dragging');
+      list.querySelectorAll('.entry-card').forEach(c=>c.classList.remove('drag-over'));
+    });
+    card.addEventListener('dragover',e=>{
+      e.preventDefault();
+      list.querySelectorAll('.entry-card').forEach(c=>c.classList.remove('drag-over'));
+      card.classList.add('drag-over');
+    });
+    card.addEventListener('drop',async e=>{
+      e.preventDefault();
+      card.classList.remove('drag-over');
+      if(dragSrcId===card.dataset.id) return;
+      // reorder in memory
+      const tab=activeTab;
+      const arr=[...allEntries[tab]];
+      const fromIdx=arr.findIndex(x=>x.id===dragSrcId);
+      const toIdx  =arr.findIndex(x=>x.id===card.dataset.id);
+      if(fromIdx<0||toIdx<0) return;
+      const [moved]=arr.splice(fromIdx,1);
+      arr.splice(toIdx,0,moved);
+      // assign order values and persist
+      allEntries[tab]=arr;
+      renderSection();
+      for(let i=0;i<arr.length;i++){
+        await setDoc(doc(db,tab,arr[i].id),{...arr[i],order:i},{merge:true});
+      }
+    });
+  });
+}
+ 
 // ── DELETE ──
-window.deleteEntry = async function(id, tab){
+window.deleteEntry=async function(id){
   if(!confirm('Remove this entry?')) return;
-  try {
-    await deleteDoc(doc(db, tab, id));
-    showToast('Removed');
-  } catch(e){ showToast('Error removing'); console.error(e); }
+  try{ await deleteDoc(doc(db,activeTab,id)); showToast('Removed'); }
+  catch(e){ showToast('Error'); console.error(e); }
 };
  
-// ── MODAL ──
-window.openAdd = function(cardType){
+// ── MODAL: OPEN ADD ──
+window.openAdd=function(cardType){
   modalState={cardType,editId:null};
   buildModalForm(cardType,null);
   document.getElementById('modal').classList.add('open');
 };
  
-window.closeModal = function(){
+// ── MODAL: OPEN EDIT ──
+window.openEdit=function(id){
+  const entry=(allEntries[activeTab]||[]).find(e=>e.id===id);
+  if(!entry) return;
+  const cfg=getSect();
+  const cardType=cfg.custom?'note':(entry.type||'contact');
+  modalState={cardType,editId:id};
+  buildModalForm(cardType,entry);
+  document.getElementById('modal').classList.add('open');
+};
+ 
+window.closeModal=function(){
   document.getElementById('modal').classList.remove('open');
   modalState=null;
 };
- 
-window.overlayClick = function(e){
+window.overlayClick=function(e){
   if(e.target===document.getElementById('modal')) closeModal();
 };
  
-function buildModalForm(cardType, e){
-  const cfg = SECTIONS[activeTab];
-  const isC = cardType==='contact';
-  e = e||{};
-  document.getElementById('modal-title').textContent =
+function buildModalForm(cardType,e){
+  const cfg=getSect();
+  const isC=cardType==='contact'&&!cfg.custom;
+  e=e||{};
+  document.getElementById('modal-title').textContent=
     modalState?.editId?(isC?'Edit Contact':'Edit Note')
                       :(isC?`Add Contact — ${cfg.label}`:`Add Note — ${cfg.label}`);
  
-  const opts = cfg.statuses.map(s=>
-    `<option value="${s.value}"${(e.status||(isC?'called':'pending'))===s.value?' selected':''}>${s.badge}</option>`
-  ).join('');
+  const statuses=cfg.statuses||STD_STATUSES;
+  const defStatus=isC?'called':'pending';
+  const opts=statuses.map(s=>`<option value="${s.value}"${(e.status||defStatus)===s.value?' selected':''}>${s.badge}</option>`).join('');
  
   if(!isC){
     document.getElementById('modal-body').innerHTML=`
       <div class="form-group"><label class="form-label">Title</label>
-        <input id="f-title" class="form-inp" placeholder="e.g. Choreography idea, decor theme…" value="${esc(e.title||'')}"></div>
+        <input id="f-title" class="form-inp" placeholder="e.g. Song list, guest note, idea…" value="${esc(e.title||'')}"></div>
       <div class="form-group"><label class="form-label">Status</label>
         <select id="f-status" class="form-inp">${opts}</select></div>
       <div class="form-group"><label class="form-label">Notes</label>
@@ -449,10 +636,10 @@ function buildModalForm(cardType, e){
   } else {
     document.getElementById('modal-body').innerHTML=`
       <div class="form-group"><label class="form-label">${cfg.showPhone?'Vendor / Person Name':'Name / Description'}</label>
-        <input id="f-name" class="form-inp" placeholder="e.g. Sharma Caterers, Raj Photography…" value="${esc(e.name||'')}"></div>
+        <input id="f-name" class="form-inp" placeholder="e.g. Sharma Caterers…" value="${esc(e.name||'')}"></div>
       ${cfg.showPhone?`
       <div class="form-row">
-        <div><label class="form-label">Phone / Contact</label>
+        <div><label class="form-label">Phone</label>
           <input id="f-phone" class="form-inp" placeholder="+91 …" value="${esc(e.phone||'')}"></div>
         <div><label class="form-label">Date Called</label>
           <input id="f-date" type="date" class="form-inp" value="${esc(e.date||'')}"></div>
@@ -465,39 +652,44 @@ function buildModalForm(cardType, e){
         <div><label class="form-label">Status</label>
           <select id="f-status" class="form-inp">${opts}</select></div>
       </div>
-      <div class="form-group"><label class="form-label">Notes — what did they say?</label>
-        <textarea id="f-notes" class="form-inp" placeholder="Price, availability, inclusions, vibe…" rows="3">${esc(e.notes||'')}</textarea></div>
-      <div class="form-group"><label class="form-label">Follow-up / Next Action</label>
-        <input id="f-followup" class="form-inp" placeholder="e.g. Call back Thursday, visit showroom…" value="${esc(e.followup||'')}"></div>`;
+      <div class="form-group"><label class="form-label">Notes</label>
+        <textarea id="f-notes" class="form-inp" placeholder="Price, availability, vibe…" rows="3">${esc(e.notes||'')}</textarea></div>
+      <div class="form-group"><label class="form-label">Follow-up</label>
+        <input id="f-followup" class="form-inp" placeholder="e.g. Call back Thursday…" value="${esc(e.followup||'')}"></div>`;
   }
 }
  
-window.saveEntry = async function(){
+window.saveEntry=async function(){
   if(!modalState) return;
-  const isC   = modalState.cardType==='contact';
-  const name  = isC?(document.getElementById('f-name')?.value||'').trim():'';
-  const title = !isC?(document.getElementById('f-title')?.value||'').trim():'';
-  if(isC&&!name){ showToast('Please enter a name'); return; }
-  if(!isC&&!title){ showToast('Please enter a title'); return; }
+  const cfg=getSect();
+  const isC=modalState.cardType==='contact'&&!cfg.custom;
+  const name =(document.getElementById('f-name')?.value||'').trim();
+  const title=(document.getElementById('f-title')?.value||'').trim();
+  if(isC&&!name){showToast('Please enter a name');return;}
+  if(!isC&&!title){showToast('Please enter a title');return;}
  
-  const entry = {
-    type:      modalState.cardType,
+  const existingOrder = modalState.editId
+    ? ((allEntries[activeTab]||[]).find(e=>e.id===modalState.editId)?.order??Date.now())
+    : Date.now();
+ 
+  const entry={
+    type:     modalState.cardType,
     name, title,
-    phone:     document.getElementById('f-phone')?.value.trim()||'',
-    date:      document.getElementById('f-date')?.value||'',
-    price:     document.getElementById('f-price')?.value.trim()||'',
-    status:    document.getElementById('f-status')?.value||'called',
-    notes:     document.getElementById('f-notes')?.value.trim()||'',
-    followup:  document.getElementById('f-followup')?.value.trim()||'',
-    createdAt: modalState.editId ? (allEntries[activeTab].find(e=>e.id===modalState.editId)?.createdAt||Date.now()) : Date.now(),
+    phone:    document.getElementById('f-phone')?.value.trim()||'',
+    date:     document.getElementById('f-date')?.value||'',
+    price:    document.getElementById('f-price')?.value.trim()||'',
+    status:   document.getElementById('f-status')?.value||'pending',
+    notes:    document.getElementById('f-notes')?.value.trim()||'',
+    followup: document.getElementById('f-followup')?.value.trim()||'',
+    order:    existingOrder,
+    createdAt:modalState.editId?((allEntries[activeTab]||[]).find(e=>e.id===modalState.editId)?.createdAt||Date.now()):Date.now(),
   };
- 
-  try {
-    const id = modalState.editId || uid();
-    await setDoc(doc(db, activeTab, id), entry);
+  try{
+    const id=modalState.editId||uid();
+    await setDoc(doc(db,activeTab,id),entry);
     showToast(modalState.editId?'Updated ✓':'Saved ✓');
     closeModal();
-  } catch(e){ showToast('Error saving'); console.error(e); }
+  }catch(e){showToast('Error saving');console.error(e);}
 };
  
 // ── TOAST ──
@@ -508,11 +700,12 @@ function showToast(msg){
   clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>t.style.display='none',2500);
 }
+window.showToast=showToast;
  
 // ── INIT ──
-buildTabs();
-subscribeTab(activeTab); // load first tab + hide loader when ready
+await loadCustomPages();
+subscribeTab(activeTab);
+buildDrawer();
 </script>
 </body>
 </html>
- 
