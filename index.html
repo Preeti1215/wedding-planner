@@ -98,12 +98,13 @@ body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--tex
  
 /* ENTRIES */
 #entries-list { display:flex; flex-direction:column; gap:10px; }
-.entry-card { background:#fff; border:1px solid var(--border-light); border-left:4px solid var(--mustard-border); border-radius:6px; padding:14px 16px; box-shadow:0 1px 6px rgba(160,114,8,0.07); cursor:grab; transition:box-shadow 0.2s, opacity 0.2s; user-select:none; }
+.entry-card { background:#fff; border:1px solid var(--border-light); border-left:4px solid var(--mustard-border); border-radius:6px; padding:14px 16px; box-shadow:0 1px 6px rgba(160,114,8,0.07); transition:box-shadow 0.2s; }
 .entry-card.note-card { background:var(--mustard-pale); }
-.entry-card.dragging { opacity:0.4; cursor:grabbing; }
-.entry-card.drag-over { box-shadow:0 0 0 2px var(--mustard); }
 .entry-inner { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
-.drag-handle { color:var(--border); font-size:14px; cursor:grab; padding:2px 4px 0 0; flex-shrink:0; line-height:1; }
+.entry-reorder { display:flex; flex-direction:column; gap:3px; flex-shrink:0; padding-top:2px; }
+.btn-move { background:none; border:1px solid var(--border); border-radius:4px; padding:3px 6px; cursor:pointer; font-size:11px; color:var(--text-dim); line-height:1; transition:all 0.15s; }
+.btn-move:hover { background:var(--mustard-pale); border-color:var(--mustard-border); color:var(--mustard-deep); }
+.btn-move:disabled { opacity:0.2; cursor:default; }
 .entry-content { flex:1; min-width:0; }
 .entry-type-label { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-dim); margin-bottom:3px; font-weight:700; }
 .entry-card.note-card .entry-type-label { color:var(--mustard); }
@@ -114,7 +115,7 @@ body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--tex
 .meta-info { font-size:11px; color:var(--text-dim); }
 .entry-notes { font-size:12.5px; color:var(--text-mid); line-height:1.65; margin-top:5px; }
 .entry-followup { font-size:12.5px; color:var(--mustard-deep); margin-top:4px; font-weight:700; }
-.entry-actions { display:flex; gap:5px; flex-shrink:0; }
+.entry-actions { display:flex; flex-direction:column; gap:5px; flex-shrink:0; }
 .btn-edit, .btn-delete { background:var(--mustard-pale); border:1px solid var(--border); border-radius:4px; padding:4px 8px; cursor:pointer; font-size:12px; color:var(--text-mid); }
 .btn-edit:hover { background:#e8f0ff; border-color:#a0b8e0; }
 .btn-delete:hover { background:#fdeaea; border-color:#f0a0a0; }
@@ -156,7 +157,7 @@ textarea.form-inp { resize:vertical; min-height:80px; }
 <!-- LOADING -->
 <div id="loading-screen">
   <div class="ls-title">Qt weds Headache</div>
-  <div class="ls-sub">Marwari Wedding Planner</div>
+  <div class="ls-sub"> Wedding Planner</div>
   <div class="spinner"></div>
 </div>
  
@@ -167,7 +168,7 @@ textarea.form-inp { resize:vertical; min-height:80px; }
 <div id="drawer">
   <div class="drawer-header">
     <div class="drawer-header-title">Qt weds Headache</div>
-    <div class="drawer-header-sub">Marwari Wedding Planner</div>
+    <div class="drawer-header-sub"> Wedding Planner</div>
   </div>
   <div class="drawer-section-label">Wedding Categories</div>
   <div id="drawer-tabs"></div>
@@ -192,7 +193,7 @@ textarea.form-inp { resize:vertical; min-height:80px; }
         <span class="weds">weds</span>
         <span class="big">Headache</span>
       </div>
-      <div class="header-sub">Marwari Wedding Planner</div>
+      <div class="header-sub"> Wedding Planner</div>
       <div class="header-orna">
         <div class="line"></div><span class="sym">✾</span>
         <span class="sym2">◈</span><span class="sym">✾</span>
@@ -338,7 +339,6 @@ let activeTab      = "food";
 let allEntries     = {};
 let modalState     = null;
 let unsubscribes   = {};
-let dragSrcId      = null;
  
 function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
 function esc(s){ const d=document.createElement('div'); d.textContent=String(s||''); return d.innerHTML; }
@@ -504,7 +504,6 @@ function renderSection(){
       </div>`;
   } else {
     area.innerHTML=`<div id="entries-list">${list.map(entryHTML).join('')}</div>`;
-    attachDragHandlers();
   }
 }
  
@@ -515,10 +514,16 @@ function entryHTML(entry){
   const bs=BADGE_STYLES[entry.status]||BADGE_STYLES.pending;
   const dateStr=entry.date?new Date(entry.date+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'';
   const borderC=BORDER_COLORS[entry.status]||'#e8c456';
+  const list=allEntries[activeTab]||[];
+  const idx=list.findIndex(x=>x.id===entry.id);
+  const isFirst=idx===0, isLast=idx===list.length-1;
   return `
-    <div class="entry-card${isNote?' note-card':''}" style="border-left-color:${borderC}" draggable="true" data-id="${esc(entry.id)}">
+    <div class="entry-card${isNote?' note-card':''}" style="border-left-color:${borderC}" data-id="${esc(entry.id)}">
       <div class="entry-inner">
-        <span class="drag-handle" title="Drag to reorder">⠿</span>
+        <div class="entry-reorder">
+          <button class="btn-move" onclick="moveEntry('${esc(entry.id)}',-1)" ${isFirst?'disabled':''} title="Move up">▲</button>
+          <button class="btn-move" onclick="moveEntry('${esc(entry.id)}',1)"  ${isLast ?'disabled':''} title="Move down">▼</button>
+        </div>
         <div class="entry-content">
           <div class="entry-type-label">${isNote?'📌 Note':'📞 Contact'}</div>
           <div class="entry-name">${esc(isNote?entry.title:entry.name)}</div>
@@ -539,46 +544,24 @@ function entryHTML(entry){
     </div>`;
 }
  
-// ── DRAG & DROP REORDER ──
-function attachDragHandlers(){
-  const list=document.getElementById('entries-list');
-  if(!list) return;
-  list.querySelectorAll('.entry-card').forEach(card=>{
-    card.addEventListener('dragstart',e=>{
-      dragSrcId=card.dataset.id;
-      card.classList.add('dragging');
-      e.dataTransfer.effectAllowed='move';
-    });
-    card.addEventListener('dragend',()=>{
-      card.classList.remove('dragging');
-      list.querySelectorAll('.entry-card').forEach(c=>c.classList.remove('drag-over'));
-    });
-    card.addEventListener('dragover',e=>{
-      e.preventDefault();
-      list.querySelectorAll('.entry-card').forEach(c=>c.classList.remove('drag-over'));
-      card.classList.add('drag-over');
-    });
-    card.addEventListener('drop',async e=>{
-      e.preventDefault();
-      card.classList.remove('drag-over');
-      if(dragSrcId===card.dataset.id) return;
-      // reorder in memory
-      const tab=activeTab;
-      const arr=[...allEntries[tab]];
-      const fromIdx=arr.findIndex(x=>x.id===dragSrcId);
-      const toIdx  =arr.findIndex(x=>x.id===card.dataset.id);
-      if(fromIdx<0||toIdx<0) return;
-      const [moved]=arr.splice(fromIdx,1);
-      arr.splice(toIdx,0,moved);
-      // assign order values and persist
-      allEntries[tab]=arr;
-      renderSection();
-      for(let i=0;i<arr.length;i++){
-        await setDoc(doc(db,tab,arr[i].id),{...arr[i],order:i},{merge:true});
-      }
-    });
-  });
-}
+// ── MOVE UP / DOWN ──
+window.moveEntry=async function(id, direction){
+  const tab=activeTab;
+  const arr=[...allEntries[tab]];
+  const idx=arr.findIndex(x=>x.id===id);
+  const newIdx=idx+direction;
+  if(newIdx<0||newIdx>=arr.length) return;
+  // swap
+  [arr[idx],arr[newIdx]]=[arr[newIdx],arr[idx]];
+  allEntries[tab]=arr;
+  renderSection();
+  // persist new order to Firebase
+  try {
+    for(let i=0;i<arr.length;i++){
+      await setDoc(doc(db,tab,arr[i].id),{...arr[i],order:i},{merge:true});
+    }
+  } catch(e){ console.error(e); }
+};
  
 // ── DELETE ──
 window.deleteEntry=async function(id){
