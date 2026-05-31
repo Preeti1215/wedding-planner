@@ -15,14 +15,14 @@
   --border:#e8d484; --border-light:#f2e9b0;
 }
 body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--text); min-height:100vh; }
- 
+
 /* ── LOADING ── */
 #loading-screen { position:fixed; inset:0; background:var(--mustard); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:999; transition:opacity 0.4s; }
 #loading-screen .ls-title { font-family:'Cinzel',serif; font-size:32px; font-weight:600; color:#fff; letter-spacing:0.08em; margin-bottom:8px; }
 #loading-screen .ls-sub { font-family:'Cinzel',serif; font-size:11px; color:rgba(255,255,255,0.6); letter-spacing:0.4em; text-transform:uppercase; margin-bottom:28px; }
 .spinner { width:28px; height:28px; border:3px solid rgba(255,255,255,0.3); border-top-color:#fff; border-radius:50%; animation:spin 0.8s linear infinite; }
 @keyframes spin { to { transform:rotate(360deg); } }
- 
+
 /* ── HEADER ── */
 #header { background:var(--mustard); position:sticky; top:0; z-index:40; box-shadow:0 3px 16px rgba(160,114,8,0.35); }
 .header-top-line { height:2px; background:rgba(255,255,255,0.6); }
@@ -35,19 +35,19 @@ body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--tex
 .header-orna .line { width:30px; height:1px; background:rgba(255,255,255,0.35); }
 .header-orna .sym { color:rgba(255,255,255,0.65); font-size:11px; }
 .header-orna .sym2 { color:rgba(255,255,255,0.45); font-size:8px; }
- 
+
 /* Hamburger */
 .hamburger-btn { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.35); border-radius:6px; padding:8px 10px; cursor:pointer; display:flex; flex-direction:column; gap:4px; flex-shrink:0; }
 .hamburger-btn span { display:block; width:18px; height:2px; background:#fff; border-radius:2px; transition:all 0.25s; }
- 
+
 /* Sync */
 #sync-status { display:flex; align-items:center; gap:5px; font-size:10px; color:rgba(255,255,255,0.6); font-family:'Lato',sans-serif; flex-shrink:0; min-width:60px; justify-content:flex-end; }
 #sync-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4); flex-shrink:0; }
 #sync-dot.live { background:#7fff7f; box-shadow:0 0 5px #7fff7f; }
 #sync-dot.error { background:#ff9090; }
- 
+
 .chevron-border { display:block; width:100%; height:8px; }
- 
+
 /* ── DRAWER MENU ── */
 #drawer-overlay { position:fixed; inset:0; background:rgba(80,50,0,0.4); z-index:60; display:none; }
 #drawer-overlay.open { display:block; }
@@ -66,11 +66,11 @@ body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--tex
 .drawer-footer { margin-top:auto; padding:14px 18px; border-top:1px solid var(--border-light); }
 .btn-new-page { width:100%; background:var(--mustard); color:#fff; border:none; border-radius:4px; padding:10px; font-family:'Cinzel',serif; font-size:12px; font-weight:400; letter-spacing:0.08em; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; }
 .btn-new-page:hover { background:var(--mustard-deep); }
- 
+
 /* ── CURRENT PAGE LABEL ── */
 #page-label { background:var(--mustard-pale); border-bottom:1px solid var(--mustard-border); padding:8px 20px; display:flex; align-items:center; gap:8px; }
 #page-label-text { font-family:'Cinzel',serif; font-size:13px; color:var(--mustard-deep); font-weight:400; letter-spacing:0.04em; }
- 
+
 /* ── BODY ── */
 #body { max-width:900px; margin:0 auto; padding:24px 20px 60px; }
 .section-head { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:20px; }
@@ -83,19 +83,19 @@ body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--tex
 .section-btns { display:flex; gap:8px; flex-shrink:0; padding-top:4px; }
 .btn-add-contact { background:var(--mustard); color:#fff; border:1px solid var(--mustard-deep); padding:9px 16px; border-radius:4px; font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.08em; font-family:'Lato',sans-serif; box-shadow:0 2px 8px rgba(160,114,8,0.25); }
 .btn-add-note { background:#fff; color:var(--mustard-deep); border:1px solid var(--mustard-border); padding:9px 16px; border-radius:4px; font-size:12px; font-weight:700; cursor:pointer; letter-spacing:0.08em; font-family:'Lato',sans-serif; }
- 
+
 /* CHIPS */
 .chips { display:flex; gap:7px; flex-wrap:wrap; margin-bottom:20px; }
 .chip { display:flex; align-items:center; gap:6px; background:#fff; border:1px solid var(--border); border-radius:20px; padding:4px 12px; font-size:11px; }
 .chip-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
 .chip-label { color:var(--text-mid); }
 .chip-count { color:var(--text); font-weight:700; }
- 
+
 /* EMPTY */
 .empty-state { background:#fff; border:2px dashed var(--mustard-border); border-radius:8px; padding:50px 20px; text-align:center; }
 .empty-icon { font-size:32px; margin-bottom:10px; opacity:0.25; }
 .empty-text { font-family:'Cinzel',serif; font-size:13px; color:var(--text-mid); letter-spacing:0.04em; line-height:2; }
- 
+
 /* ENTRIES */
 #entries-list { display:flex; flex-direction:column; gap:10px; }
 .entry-card { background:#fff; border:1px solid var(--border-light); border-left:4px solid var(--mustard-border); border-radius:6px; padding:14px 16px; box-shadow:0 1px 6px rgba(160,114,8,0.07); transition:box-shadow 0.2s; }
@@ -119,7 +119,7 @@ body { font-family:'Lato',sans-serif; background:var(--page-bg); color:var(--tex
 .btn-edit, .btn-delete { background:var(--mustard-pale); border:1px solid var(--border); border-radius:4px; padding:4px 8px; cursor:pointer; font-size:12px; color:var(--text-mid); }
 .btn-edit:hover { background:#e8f0ff; border-color:#a0b8e0; }
 .btn-delete:hover { background:#fdeaea; border-color:#f0a0a0; }
- 
+
 /* MODAL */
 .modal-overlay { position:fixed; inset:0; background:rgba(80,50,0,0.45); backdrop-filter:blur(4px); z-index:100; display:none; align-items:center; justify-content:center; padding:16px; }
 .modal-overlay.open { display:flex; }
@@ -136,13 +136,44 @@ textarea.form-inp { resize:vertical; min-height:80px; }
 .modal-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:16px; }
 .btn-cancel { background:none; border:1px solid var(--border); border-radius:4px; padding:9px 18px; font-size:12px; color:var(--text-mid); cursor:pointer; font-family:'Lato',sans-serif; font-weight:700; letter-spacing:0.08em; }
 .btn-save { background:var(--mustard); border:1px solid var(--mustard-deep); border-radius:4px; padding:9px 22px; font-size:12px; font-weight:700; color:#fff; cursor:pointer; font-family:'Lato',sans-serif; letter-spacing:0.08em; }
- 
+
 /* TOAST */
 #toast { position:fixed; bottom:20px; right:20px; background:var(--mustard); color:#fff; padding:10px 18px; border-radius:4px; font-size:13px; font-weight:700; border:1px solid var(--mustard-deep); box-shadow:0 4px 16px rgba(160,114,8,0.4); z-index:200; letter-spacing:0.05em; display:none; }
- 
+
+/* ── GUEST LIST ── */
+.gl-totals { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+.gl-total-card { background:#fff; border:1px solid var(--border); border-radius:8px; padding:14px 20px; text-align:center; flex:1; min-width:120px; box-shadow:0 1px 4px rgba(160,114,8,0.07); }
+.gl-total-num { font-family:'Cinzel',serif; font-size:32px; font-weight:600; color:var(--mustard-deep); line-height:1; }
+.gl-total-label { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin-top:4px; font-weight:700; }
+.gl-total-card.confirmed { border-top:3px solid #2d7a4f; }
+.gl-total-card.confirmed .gl-total-num { color:#2d7a4f; }
+.gl-total-card.pending-t { border-top:3px solid var(--mustard); }
+.gl-total-card.total-t { border-top:3px solid var(--mustard-deep); }
+
+.gl-subtabs { display:flex; gap:0; margin-bottom:20px; border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.gl-subtab { flex:1; padding:10px; background:#fff; border:none; font-family:'Lato',sans-serif; font-size:12px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-dim); cursor:pointer; transition:all 0.15s; }
+.gl-subtab.active { background:var(--mustard); color:#fff; }
+.gl-subtab:not(.active):hover { background:var(--mustard-pale); }
+
+.gl-list { display:flex; flex-direction:column; gap:8px; }
+.gl-item { background:#fff; border:1px solid var(--border-light); border-radius:6px; padding:12px 16px; display:flex; align-items:center; gap:12px; box-shadow:0 1px 4px rgba(160,114,8,0.05); transition:border-color 0.15s; }
+.gl-item:hover { border-color:var(--mustard-border); }
+.gl-item.confirmed-item { border-left:4px solid #2d7a4f; }
+.gl-item.pending-item   { border-left:4px solid var(--mustard-border); }
+.gl-checkbox { width:20px; height:20px; accent-color:var(--mustard-deep); cursor:pointer; flex-shrink:0; }
+.gl-item-info { flex:1; min-width:0; }
+.gl-item-name { font-family:'Cinzel',serif; font-size:14px; color:var(--text); letter-spacing:0.02em; }
+.gl-item-name.done-name { text-decoration:line-through; opacity:0.5; }
+.gl-item-count { font-size:11px; color:var(--text-dim); margin-top:2px; }
+.gl-item-actions { display:flex; gap:5px; flex-shrink:0; }
+.gl-item-reorder { display:flex; flex-direction:column; gap:2px; flex-shrink:0; }
+.btn-gl-move { background:none; border:1px solid var(--border); border-radius:3px; padding:2px 5px; cursor:pointer; font-size:10px; color:var(--text-dim); line-height:1; }
+.btn-gl-move:disabled { opacity:0.2; cursor:default; }
+.btn-gl-move:not(:disabled):hover { background:var(--mustard-pale); border-color:var(--mustard-border); }
+
 /* Guest list specific — simple table style */
 .guest-section-hint { font-size:12px; color:var(--text-dim); margin-bottom:16px; font-style:italic; }
- 
+
 @media(max-width:600px){
   .header-title .big{font-size:22px;}
   .header-title .weds{font-size:13px;margin:0 5px;}
@@ -153,25 +184,28 @@ textarea.form-inp { resize:vertical; min-height:80px; }
 </style>
 </head>
 <body>
- 
+
 <!-- LOADING -->
 <div id="loading-screen">
   <div class="ls-title">Qt weds Headache</div>
-  <div class="ls-sub"> Wedding Planner</div>
+  <div class="ls-sub">Marwari Wedding Planner</div>
   <div class="spinner"></div>
 </div>
- 
+
 <!-- DRAWER OVERLAY -->
 <div id="drawer-overlay" onclick="closeDrawer()"></div>
- 
+
 <!-- DRAWER -->
 <div id="drawer">
   <div class="drawer-header">
     <div class="drawer-header-title">Qt weds Headache</div>
-    <div class="drawer-header-sub"> Wedding Planner</div>
+    <div class="drawer-header-sub">Marwari Wedding Planner</div>
   </div>
   <div class="drawer-section-label">Wedding Categories</div>
   <div id="drawer-tabs"></div>
+  <div class="drawer-divider"></div>
+  <div class="drawer-section-label">Guest Lists</div>
+  <div id="drawer-guest-section"></div>
   <div class="drawer-divider"></div>
   <div class="drawer-section-label">Custom Pages</div>
   <div id="drawer-custom-pages"></div>
@@ -179,7 +213,7 @@ textarea.form-inp { resize:vertical; min-height:80px; }
     <button class="btn-new-page" onclick="openNewPageModal()">✦ &nbsp;Create New Page</button>
   </div>
 </div>
- 
+
 <!-- HEADER -->
 <div id="header">
   <div class="header-top-line"></div>
@@ -193,7 +227,7 @@ textarea.form-inp { resize:vertical; min-height:80px; }
         <span class="weds">weds</span>
         <span class="big">Headache</span>
       </div>
-      <div class="header-sub"> Wedding Planner</div>
+      <div class="header-sub">Marwari Wedding Planner</div>
       <div class="header-orna">
         <div class="line"></div><span class="sym">✾</span>
         <span class="sym2">◈</span><span class="sym">✾</span>
@@ -211,12 +245,12 @@ textarea.form-inp { resize:vertical; min-height:80px; }
     <rect width="100%" height="8" fill="url(#chev)"/>
   </svg>
 </div>
- 
+
 <!-- PAGE LABEL BAR -->
 <div id="page-label">
   <span id="page-label-text"></span>
 </div>
- 
+
 <!-- BODY -->
 <div id="body">
   <div class="section-head">
@@ -233,7 +267,7 @@ textarea.form-inp { resize:vertical; min-height:80px; }
   <div class="chips" id="chips"></div>
   <div id="entries-area"></div>
 </div>
- 
+
 <!-- ENTRY MODAL -->
 <div class="modal-overlay" id="modal" onclick="overlayClick(event)">
   <div class="modal-box">
@@ -248,7 +282,7 @@ textarea.form-inp { resize:vertical; min-height:80px; }
     </div>
   </div>
 </div>
- 
+
 <!-- NEW PAGE MODAL -->
 <div class="modal-overlay" id="new-page-modal" onclick="npOverlayClick(event)">
   <div class="modal-box" style="max-width:400px;">
@@ -270,15 +304,50 @@ textarea.form-inp { resize:vertical; min-height:80px; }
     </div>
   </div>
 </div>
- 
+
+<!-- GUEST LIST MODAL -->
+<div class="modal-overlay" id="gl-modal" onclick="glOverlayClick(event)">
+  <div class="modal-box" style="max-width:480px;">
+    <div class="modal-head">
+      <div class="modal-title" id="gl-modal-title">Add Guest</div>
+      <button class="modal-close" onclick="closeGlModal()">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Name / Group</label>
+      <input id="gl-f-name" class="form-inp" placeholder="e.g. Pankaj Mama Family, Sharma Uncle…">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Number of People</label>
+        <input id="gl-f-count" type="number" class="form-inp" placeholder="e.g. 5" min="1" value="1">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Group</label>
+        <select id="gl-f-group" class="form-inp">
+          <option value="family">Family</option>
+          <option value="friends">Friends</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Notes (optional)</label>
+      <input id="gl-f-notes" class="form-inp" placeholder="e.g. Vegetarian, coming from Mumbai…">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeGlModal()">CANCEL</button>
+      <button class="btn-save" onclick="saveGlEntry()">SAVE</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
- 
+
 <script type="module">
 import { initializeApp }                              from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, doc, setDoc,
          deleteDoc, onSnapshot, query, orderBy,
          getDocs }                                    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
- 
+
 const firebaseConfig = {
   apiKey:            "AIzaSyDxF-Y8fNz-5iCiyvaSMuHkFDVxgMFVXM8",
   authDomain:        "qt-weds-headache.firebaseapp.com",
@@ -289,7 +358,7 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
- 
+
 // ── BUILT-IN SECTIONS ──
 const BUILT_IN = {
   food:    { label:"Food Catering",  icon:"🍽️", priceLabel:"Price per Plate / Package", showPhone:true, custom:false },
@@ -298,8 +367,10 @@ const BUILT_IN = {
   sangeet: { label:"Sangeet",        icon:"🎶", priceLabel:"Price / Fee",               showPhone:false,custom:false },
   bride:   { label:"Bride Dress",    icon:"👰", priceLabel:"Price / Budget",            showPhone:true, custom:false },
   groom:   { label:"Groom Dress",    icon:"🤵", priceLabel:"Price / Budget",            showPhone:true, custom:false },
+  bride_guests: { label:"Bride Guest List", icon:"👰", guestList:true, custom:false },
+  groom_guests: { label:"Groom Guest List", icon:"🤵", guestList:true, custom:false },
 };
- 
+
 const STD_STATUSES = [
   {value:"pending", badge:"Pending",  color:"#b8982a"},
   {value:"called",  badge:"Called",   color:"#c9920a"},
@@ -308,20 +379,20 @@ const STD_STATUSES = [
   {value:"done",    badge:"Done ✓",   color:"#1a5a8a"},
   {value:"rejected",badge:"Rejected", color:"#a02020"},
 ];
- 
+
 const FOOD_STATUSES = STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Tasting Planned 🍴"}:s);
 const STAY_STATUSES = STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Site Visit 🏛️"}:s);
 const VIDEO_STATUSES= STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Portfolio Review 🎬"}:s);
 const SANG_STATUSES = STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Demo Planned 🎤"}:s);
 const DRESS_STATUSES= STD_STATUSES.map(s=>s.value==="special"?{...s,badge:"Trial Planned 👗"}:s);
- 
+
 BUILT_IN.food.statuses    = FOOD_STATUSES;
 BUILT_IN.stay.statuses    = STAY_STATUSES;
 BUILT_IN.video.statuses   = VIDEO_STATUSES;
 BUILT_IN.sangeet.statuses = SANG_STATUSES;
 BUILT_IN.bride.statuses   = DRESS_STATUSES;
 BUILT_IN.groom.statuses   = DRESS_STATUSES.map(s=>s.value==="special"?{...s,badge:"Trial Planned 🧵"}:s);
- 
+
 const BORDER_COLORS = {pending:"#d4aa30",called:"#c9920a",special:"#8a5e00",booked:"#2d7a4f",done:"#1a5a8a",rejected:"#a02020"};
 const BADGE_STYLES  = {
   pending: {bg:"#fef9d8",color:"#6b5010",border:"#e8d060"},
@@ -331,7 +402,7 @@ const BADGE_STYLES  = {
   done:    {bg:"#e6f0f8",color:"#0f3a5e",border:"#80aace"},
   rejected:{bg:"#faeaea",color:"#701010",border:"#e09090"},
 };
- 
+
 // ── STATE ──
 let SECTIONS       = {...BUILT_IN};
 let customPages    = {}; // id -> {label,icon}
@@ -339,11 +410,13 @@ let activeTab      = "food";
 let allEntries     = {};
 let modalState     = null;
 let unsubscribes   = {};
- 
+let glSubTab       = "family"; // for guest list pages
+let glModalState   = null;
+
 function uid(){ return Math.random().toString(36).slice(2)+Date.now().toString(36); }
 function esc(s){ const d=document.createElement('div'); d.textContent=String(s||''); return d.innerHTML; }
 function getSect(){ return SECTIONS[activeTab]; }
- 
+
 // ── SYNC STATUS ──
 function setSyncStatus(state){
   const dot=document.getElementById('sync-dot'), lbl=document.getElementById('sync-label');
@@ -351,7 +424,7 @@ function setSyncStatus(state){
   else if(state==='error'){dot.className='error';lbl.textContent='error';}
   else{dot.className='';lbl.textContent='…';}
 }
- 
+
 // ── SUBSCRIBE TAB ──
 function subscribeTab(tab){
   if(unsubscribes[tab]) return;
@@ -368,7 +441,7 @@ function subscribeTab(tab){
     err=>{console.error(err);setSyncStatus('error');}
   );
 }
- 
+
 // ── CUSTOM PAGES (stored in Firestore _meta collection) ──
 async function loadCustomPages(){
   try{
@@ -386,22 +459,34 @@ async function loadCustomPages(){
   }catch(e){console.error(e);}
   buildDrawer();
 }
- 
+
 async function saveCustomPages(){
   await setDoc(doc(db,'_meta','custom_pages'),{pages:customPages});
 }
- 
+
 // ── DRAWER ──
 function buildDrawer(){
-  // built-in tabs
+  // built-in planning tabs
+  const planningKeys = ['food','stay','video','sangeet','bride','groom'];
   document.getElementById('drawer-tabs').innerHTML =
-    Object.entries(BUILT_IN).map(([key,cfg])=>`
+    planningKeys.map(key=>{ const cfg=BUILT_IN[key]; return `
       <button class="drawer-item${activeTab===key?' active':''}" onclick="switchTab('${key}')">
         <span class="d-icon">${cfg.icon}</span>
         ${cfg.label}
         <span class="d-count">${(allEntries[key]||[]).length}</span>
-      </button>`).join('');
- 
+      </button>`; }).join('');
+
+  // guest list section in drawer
+  const glHtml = ['bride_guests','groom_guests'].map(key=>{ const cfg=BUILT_IN[key]; const list=allEntries[key]||[]; const total=list.reduce((s,e)=>s+(parseInt(e.count)||0),0); return `
+      <button class="drawer-item${activeTab===key?' active':''}" onclick="switchTab('${key}')">
+        <span class="d-icon">${cfg.icon}</span>
+        ${cfg.label}
+        <span class="d-count">${total} ppl</span>
+      </button>`; }).join('');
+  // inject into drawer after divider
+  const guestSection = document.getElementById('drawer-guest-section');
+  if(guestSection) guestSection.innerHTML = glHtml;
+
   // custom pages
   const cpKeys=Object.keys(customPages);
   document.getElementById('drawer-custom-pages').innerHTML = cpKeys.length===0
@@ -413,7 +498,7 @@ function buildDrawer(){
           <span class="d-count">${(allEntries[key]||[]).length}</span>
         </button>`).join('');
 }
- 
+
 window.toggleDrawer=function(){
   document.getElementById('drawer').classList.toggle('open');
   document.getElementById('drawer-overlay').classList.toggle('open');
@@ -422,7 +507,7 @@ window.closeDrawer=function(){
   document.getElementById('drawer').classList.remove('open');
   document.getElementById('drawer-overlay').classList.remove('open');
 };
- 
+
 window.switchTab=function(key){
   activeTab=key;
   closeDrawer();
@@ -430,7 +515,7 @@ window.switchTab=function(key){
   buildDrawer();
   renderSection();
 };
- 
+
 // ── NEW PAGE MODAL ──
 window.openNewPageModal=function(){
   closeDrawer();
@@ -458,16 +543,22 @@ window.createNewPage=function(){
   switchTab(id);
   showToast(`"${name}" page created ✓`);
 };
- 
+
 // ── RENDER SECTION ──
 function renderSection(){
   const cfg=getSect();
   if(!cfg) return;
- 
+
   // page label bar
   document.getElementById('page-label-text').textContent=cfg.icon+'  '+cfg.label;
   document.getElementById('section-title').textContent=cfg.icon+'  '+cfg.label;
- 
+
+  // guest list page
+  if(cfg.guestList){
+    renderGuestList();
+    return;
+  }
+
   // buttons
   const btns=document.getElementById('section-btns');
   if(cfg.custom){
@@ -477,7 +568,7 @@ function renderSection(){
       <button class="btn-add-contact" onclick="openAdd('contact')">${cfg.showPhone?'+ ADD CONTACT':'+ ADD ENTRY'}</button>
       <button class="btn-add-note" onclick="openAdd('note')">+ ADD NOTE</button>`;
   }
- 
+
   // chips (only for built-in with statuses)
   const list=allEntries[activeTab]||[];
   if(!cfg.custom){
@@ -492,7 +583,7 @@ function renderSection(){
   } else {
     document.getElementById('chips').innerHTML='';
   }
- 
+
   // entries
   const area=document.getElementById('entries-area');
   if(list.length===0){
@@ -506,7 +597,186 @@ function renderSection(){
     area.innerHTML=`<div id="entries-list">${list.map(entryHTML).join('')}</div>`;
   }
 }
- 
+
+// ── GUEST LIST RENDER ──
+function renderGuestList(){
+  const list = allEntries[activeTab]||[];
+  const filtered = list.filter(e=>e.group===glSubTab);
+
+  // totals across ALL (family+friends)
+  const totalAll     = list.reduce((s,e)=>s+(parseInt(e.count)||0),0);
+  const confirmedAll = list.filter(e=>e.confirmed).reduce((s,e)=>s+(parseInt(e.count)||0),0);
+  const pendingAll   = totalAll - confirmedAll;
+
+  // totals for current subtab
+  const totalTab     = filtered.reduce((s,e)=>s+(parseInt(e.count)||0),0);
+  const confirmedTab = filtered.filter(e=>e.confirmed).reduce((s,e)=>s+(parseInt(e.count)||0),0);
+
+  document.getElementById('section-btns').innerHTML=`
+    <button class="btn-add-contact" onclick="openGlModal()">+ ADD GUEST</button>`;
+  document.getElementById('chips').innerHTML='';
+
+  const area=document.getElementById('entries-area');
+  area.innerHTML=`
+    <!-- Totals -->
+    <div class="gl-totals">
+      <div class="gl-total-card total-t">
+        <div class="gl-total-num">${totalAll}</div>
+        <div class="gl-total-label">Total Invited</div>
+      </div>
+      <div class="gl-total-card confirmed">
+        <div class="gl-total-num">${confirmedAll}</div>
+        <div class="gl-total-label">Confirmed ✓</div>
+      </div>
+      <div class="gl-total-card pending-t">
+        <div class="gl-total-num">${pendingAll}</div>
+        <div class="gl-total-label">Pending</div>
+      </div>
+    </div>
+
+    <!-- Sub-tabs: Family / Friends -->
+    <div class="gl-subtabs">
+      <button class="gl-subtab${glSubTab==='family'?' active':''}" onclick="switchGlTab('family')">
+        👨‍👩‍👧 Family (${list.filter(e=>e.group==='family').reduce((s,e)=>s+(parseInt(e.count)||0),0)})
+      </button>
+      <button class="gl-subtab${glSubTab==='friends'?' active':''}" onclick="switchGlTab('friends')">
+        👫 Friends (${list.filter(e=>e.group==='friends').reduce((s,e)=>s+(parseInt(e.count)||0),0)})
+      </button>
+    </div>
+
+    <!-- Subtab total -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div style="font-size:12px;color:var(--text-dim);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;">
+        ${glSubTab==='family'?'Family':'Friends'} — ${confirmedTab} confirmed of ${totalTab}
+      </div>
+    </div>
+
+    <!-- List -->
+    ${filtered.length===0
+      ? `<div class="empty-state"><div class="empty-icon">👥</div>
+         <div class="empty-text">No ${glSubTab} added yet.<br><span style="font-size:11px;opacity:0.6">Use + ADD GUEST above.</span></div></div>`
+      : `<div class="gl-list">${filtered.map((e,i)=>glItemHTML(e,i,filtered.length)).join('')}</div>`
+    }`;
+}
+
+function glItemHTML(entry, idx, total){
+  const isFirst=idx===0, isLast=idx===total-1;
+  return `
+    <div class="gl-item ${entry.confirmed?'confirmed-item':'pending-item'}" data-id="${esc(entry.id)}">
+      <input type="checkbox" class="gl-checkbox" ${entry.confirmed?'checked':''} onchange="toggleConfirmed('${esc(entry.id)}',this.checked)" title="Mark as confirmed">
+      <div class="gl-item-info">
+        <div class="gl-item-name${entry.confirmed?' done-name':''}">${esc(entry.name)}</div>
+        <div class="gl-item-count">👥 ${entry.count||1} ${parseInt(entry.count)===1?'person':'people'}${entry.notes?'  · '+esc(entry.notes):''}</div>
+      </div>
+      <div class="gl-item-reorder">
+        <button class="btn-gl-move" onclick="moveGlEntry('${esc(entry.id)}',-1)" ${isFirst?'disabled':''}>▲</button>
+        <button class="btn-gl-move" onclick="moveGlEntry('${esc(entry.id)}',1)"  ${isLast?'disabled':''}>▼</button>
+      </div>
+      <div class="gl-item-actions">
+        <button class="btn-edit"   onclick="openGlEdit('${esc(entry.id)}')">✏️</button>
+        <button class="btn-delete" onclick="deleteGlEntry('${esc(entry.id)}')">🗑</button>
+      </div>
+    </div>`;
+}
+
+window.switchGlTab=function(tab){
+  glSubTab=tab;
+  renderGuestList();
+};
+
+window.toggleConfirmed=async function(id, checked){
+  const tab=activeTab;
+  const arr=allEntries[tab]||[];
+  const entry=arr.find(e=>e.id===id);
+  if(!entry) return;
+  entry.confirmed=checked;
+  renderGuestList();
+  buildDrawer();
+  try{ await setDoc(doc(db,tab,id),{...entry},{merge:true}); }
+  catch(e){ console.error(e); }
+};
+
+window.moveGlEntry=async function(id,direction){
+  const tab=activeTab;
+  const allList=[...allEntries[tab]];
+  // work within current subtab group only
+  const groupList=allList.filter(e=>e.group===glSubTab);
+  const idx=groupList.findIndex(e=>e.id===id);
+  const newIdx=idx+direction;
+  if(newIdx<0||newIdx>=groupList.length) return;
+  [groupList[idx],groupList[newIdx]]=[groupList[newIdx],groupList[idx]];
+  // rebuild full list preserving other group order
+  const otherList=allList.filter(e=>e.group!==glSubTab);
+  const newAll=[...otherList,...groupList];
+  allEntries[tab]=newAll;
+  renderGuestList();
+  try{
+    for(let i=0;i<newAll.length;i++){
+      await setDoc(doc(db,tab,newAll[i].id),{...newAll[i],order:i},{merge:true});
+    }
+  }catch(e){console.error(e);}
+};
+
+window.deleteGlEntry=async function(id){
+  if(!confirm('Remove this guest?')) return;
+  try{ await deleteDoc(doc(db,activeTab,id)); showToast('Removed'); buildDrawer(); }
+  catch(e){ showToast('Error'); console.error(e); }
+};
+
+// ── GUEST LIST MODAL ──
+window.openGlModal=function(){
+  glModalState={editId:null};
+  document.getElementById('gl-modal-title').textContent='Add Guest';
+  document.getElementById('gl-f-name').value='';
+  document.getElementById('gl-f-count').value='1';
+  document.getElementById('gl-f-group').value=glSubTab;
+  document.getElementById('gl-f-notes').value='';
+  document.getElementById('gl-modal').classList.add('open');
+};
+
+window.openGlEdit=function(id){
+  const entry=(allEntries[activeTab]||[]).find(e=>e.id===id);
+  if(!entry) return;
+  glModalState={editId:id};
+  document.getElementById('gl-modal-title').textContent='Edit Guest';
+  document.getElementById('gl-f-name').value=entry.name||'';
+  document.getElementById('gl-f-count').value=entry.count||1;
+  document.getElementById('gl-f-group').value=entry.group||'family';
+  document.getElementById('gl-f-notes').value=entry.notes||'';
+  document.getElementById('gl-modal').classList.add('open');
+};
+
+window.closeGlModal=function(){
+  document.getElementById('gl-modal').classList.remove('open');
+  glModalState=null;
+};
+window.glOverlayClick=function(e){
+  if(e.target===document.getElementById('gl-modal')) closeGlModal();
+};
+
+window.saveGlEntry=async function(){
+  const name=(document.getElementById('gl-f-name').value||'').trim();
+  if(!name){showToast('Please enter a name');return;}
+  const existingEntry = glModalState?.editId ? (allEntries[activeTab]||[]).find(e=>e.id===glModalState.editId) : null;
+  const entry={
+    name,
+    count:  parseInt(document.getElementById('gl-f-count').value)||1,
+    group:  document.getElementById('gl-f-group').value||'family',
+    notes:  document.getElementById('gl-f-notes').value.trim()||'',
+    confirmed: existingEntry?.confirmed||false,
+    order:  existingEntry?.order??Date.now(),
+    createdAt: existingEntry?.createdAt||Date.now(),
+  };
+  try{
+    const id=glModalState?.editId||uid();
+    await setDoc(doc(db,activeTab,id),entry);
+    glSubTab=entry.group; // switch to the group we just added to
+    showToast(glModalState?.editId?'Updated ✓':'Guest added ✓');
+    closeGlModal();
+    buildDrawer();
+  }catch(e){showToast('Error saving');console.error(e);}
+};
+
 function entryHTML(entry){
   const cfg=getSect();
   const isNote=entry.type==='note'||cfg.custom;
@@ -543,7 +813,7 @@ function entryHTML(entry){
       </div>
     </div>`;
 }
- 
+
 // ── MOVE UP / DOWN ──
 window.moveEntry=async function(id, direction){
   const tab=activeTab;
@@ -562,21 +832,21 @@ window.moveEntry=async function(id, direction){
     }
   } catch(e){ console.error(e); }
 };
- 
+
 // ── DELETE ──
 window.deleteEntry=async function(id){
   if(!confirm('Remove this entry?')) return;
   try{ await deleteDoc(doc(db,activeTab,id)); showToast('Removed'); }
   catch(e){ showToast('Error'); console.error(e); }
 };
- 
+
 // ── MODAL: OPEN ADD ──
 window.openAdd=function(cardType){
   modalState={cardType,editId:null};
   buildModalForm(cardType,null);
   document.getElementById('modal').classList.add('open');
 };
- 
+
 // ── MODAL: OPEN EDIT ──
 window.openEdit=function(id){
   const entry=(allEntries[activeTab]||[]).find(e=>e.id===id);
@@ -587,7 +857,7 @@ window.openEdit=function(id){
   buildModalForm(cardType,entry);
   document.getElementById('modal').classList.add('open');
 };
- 
+
 window.closeModal=function(){
   document.getElementById('modal').classList.remove('open');
   modalState=null;
@@ -595,7 +865,7 @@ window.closeModal=function(){
 window.overlayClick=function(e){
   if(e.target===document.getElementById('modal')) closeModal();
 };
- 
+
 function buildModalForm(cardType,e){
   const cfg=getSect();
   const isC=cardType==='contact'&&!cfg.custom;
@@ -603,11 +873,11 @@ function buildModalForm(cardType,e){
   document.getElementById('modal-title').textContent=
     modalState?.editId?(isC?'Edit Contact':'Edit Note')
                       :(isC?`Add Contact — ${cfg.label}`:`Add Note — ${cfg.label}`);
- 
+
   const statuses=cfg.statuses||STD_STATUSES;
   const defStatus=isC?'called':'pending';
   const opts=statuses.map(s=>`<option value="${s.value}"${(e.status||defStatus)===s.value?' selected':''}>${s.badge}</option>`).join('');
- 
+
   if(!isC){
     document.getElementById('modal-body').innerHTML=`
       <div class="form-group"><label class="form-label">Title</label>
@@ -641,7 +911,7 @@ function buildModalForm(cardType,e){
         <input id="f-followup" class="form-inp" placeholder="e.g. Call back Thursday…" value="${esc(e.followup||'')}"></div>`;
   }
 }
- 
+
 window.saveEntry=async function(){
   if(!modalState) return;
   const cfg=getSect();
@@ -650,11 +920,11 @@ window.saveEntry=async function(){
   const title=(document.getElementById('f-title')?.value||'').trim();
   if(isC&&!name){showToast('Please enter a name');return;}
   if(!isC&&!title){showToast('Please enter a title');return;}
- 
+
   const existingOrder = modalState.editId
     ? ((allEntries[activeTab]||[]).find(e=>e.id===modalState.editId)?.order??Date.now())
     : Date.now();
- 
+
   const entry={
     type:     modalState.cardType,
     name, title,
@@ -674,7 +944,7 @@ window.saveEntry=async function(){
     closeModal();
   }catch(e){showToast('Error saving');console.error(e);}
 };
- 
+
 // ── TOAST ──
 let toastTimer;
 function showToast(msg){
@@ -684,10 +954,12 @@ function showToast(msg){
   toastTimer=setTimeout(()=>t.style.display='none',2500);
 }
 window.showToast=showToast;
- 
+
 // ── INIT ──
 await loadCustomPages();
 subscribeTab(activeTab);
+subscribeTab('bride_guests');
+subscribeTab('groom_guests');
 buildDrawer();
 </script>
 </body>
